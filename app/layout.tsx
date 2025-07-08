@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import type { Metadata } from "next"
 import "./globals.css"
+import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "IEEE WIE CEG",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
