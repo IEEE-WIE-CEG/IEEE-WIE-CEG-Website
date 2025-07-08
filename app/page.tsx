@@ -118,6 +118,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Join IEEE WiE Global Community Section */}
+      <section className="w-full py-12 md:py-20 bg-white border-t">
+        <div className="container px-4 md:px-6 max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-2">Join IEEE WiE Global Community</h2>
+          <p className="text-muted-foreground text-base md:text-lg">
+            IEEE Women in Engineering (WIE) is one of the largest international professional organisations dedicated to promoting women engineers and scientists, and inspiring girls around the world to follow their academic interests to a career in engineering. The WIE student membership is free if you are already an IEEE member. If not, take IEEE membership <a href="https://www.ieee.org/membership/join/index.html" className="text-purple-600 underline" target="_blank" rel="noopener noreferrer">here</a> and join the WIE affinity group for free. If you are interested in promoting women, both within the IEEE and in the engineering industry, WIE is for you. Get the benefits of the IEEE membership and participate in our activities.
+          </p>
+        </div>
+      </section>
     </main>
   )
 }
