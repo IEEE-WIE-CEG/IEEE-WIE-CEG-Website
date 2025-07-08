@@ -1,8 +1,12 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Linkedin, Twitter } from "lucide-react"
+import { ChevronDown, ChevronUp } from "lucide-react"
+import * as React from "react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
 export default function AboutPage() {
   const teamMembers = [
@@ -49,6 +53,139 @@ export default function AboutPage() {
       bio: "Civil Engineering student focused on sustainable infrastructure.",
     },
   ]
+
+  const executiveTeam = [
+    {
+      name: "Rakshitha",
+      role: "Head",
+      image: "/placeholder.svg?height=100&width=100",
+    },
+    {
+      name: "Swayam",
+      role: "Treasurer",
+      image: "/placeholder.svg?height=100&width=100",
+    },
+  ]
+
+  const divisions = [
+    {
+      name: "Tech and Research",
+      head: { name: "Ananyaa Sivakumar", image: "/placeholder.svg?height=100&width=100" },
+      deputy: { name: "Dhanya Vikram", image: "/placeholder.svg?height=100&width=100" },
+      uiux: { name: "Vijay Krishna S", image: "/placeholder.svg?height=100&width=100" },
+      members: [
+        { name: "Shibani Selvakumar", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Akhshaiya S", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Shannen Catherine A", image: "/placeholder.svg?height=100&width=100" },
+      ],
+    },
+    {
+      name: "Operations and Marketing",
+      head: { name: "Harshitha UR", image: "/placeholder.svg?height=100&width=100" },
+      deputy: { name: "Ripika Sri R", image: "/placeholder.svg?height=100&width=100" },
+      members: [
+        { name: "Shushmita K", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Akshitha Ajaykumar", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Janis Miracline A", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Murugan Ramanujam", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Abharna Shree M", image: "/placeholder.svg?height=100&width=100" },
+      ],
+    },
+    {
+      name: "Events",
+      head: { name: "Swetha R Barade", image: "/placeholder.svg?height=100&width=100" },
+      deputy: { name: "Aanisa Maryam", image: "/placeholder.svg?height=100&width=100" },
+      members: [
+        { name: "Roshon R", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Aarya Malviya", image: "/placeholder.svg?height=100&width=100" },
+      ],
+    },
+    {
+      name: "Industrial Relations",
+      head: { name: "Jeevitha T", image: "/placeholder.svg?height=100&width=100" },
+      deputy: { name: "Veda Varshini R", image: "/placeholder.svg?height=100&width=100" },
+      members: [
+        { name: "K. Mega Sree", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Praveen S", image: "/placeholder.svg?height=100&width=100" },
+      ],
+    },
+    {
+      name: "Design",
+      head: { name: "Srilekha Ramkumar", image: "/placeholder.svg?height=100&width=100" },
+      deputy: { name: "Akshara Achuthan", image: "/placeholder.svg?height=100&width=100" },
+      members: [],
+    },
+  ]
+
+  function DivisionCard({ division }: { division: typeof divisions[0] }) {
+    // Only include defined heads, deputies, uiux, and members
+    const allMembers = ([division.head, division.deputy, division.uiux]
+      .filter(Boolean) as { name: string; image: string }[])
+      .concat(division.members)
+    return (
+      <Card className="text-center">
+        <CardContent className="p-6">
+          <h3 className="text-xl font-bold mb-6">{division.name}</h3>
+          <div className="flex flex-wrap justify-center gap-8 mb-6">
+            {[division.head, division.deputy, division.uiux].filter(Boolean).map((person) => (
+              person ? (
+                <div key={person.name} className="flex flex-col items-center w-40">
+                  <Avatar className="w-32 h-32 mb-2">
+                    <AvatarImage src={person.image} alt={person.name} />
+                    <AvatarFallback>{person.name[0]}</AvatarFallback>
+                  </Avatar>
+                  <span className="text-base font-semibold">{person.name}</span>
+                  <Badge variant="secondary" className="mt-1 text-xs">
+                    {person === division.head
+                      ? "Head"
+                      : person === division.deputy
+                      ? "Deputy Head"
+                      : "UI/UX Head"}
+                  </Badge>
+                </div>
+              ) : null
+            ))}
+          </div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="mt-2">View Full Team</Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl">
+              <DialogHeader>
+                <DialogTitle>{division.name} - Full Team</DialogTitle>
+              </DialogHeader>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-4">
+                {allMembers.map((person) => (
+                  person ? (
+                    <div key={person.name} className="flex flex-col items-center w-40">
+                      <Avatar className="w-32 h-32 mb-2">
+                        <AvatarImage src={person.image} alt={person.name} />
+                        <AvatarFallback>{person.name[0]}</AvatarFallback>
+                      </Avatar>
+                      <span className="text-base font-semibold">{person.name}</span>
+                      <Badge variant="outline" className="mt-1 text-xs">
+                        {person === division.head
+                          ? "Head"
+                          : person === division.deputy
+                          ? "Deputy Head"
+                          : person === division.uiux
+                          ? "UI/UX Head"
+                          : "Member"}
+                      </Badge>
+                    </div>
+                  ) : null
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  function isPerson(obj: unknown): obj is { name: string; image: string } {
+    return !!obj && typeof obj === 'object' && 'name' in obj && 'image' in obj;
+  }
 
   return (
     <main className="flex-1">
@@ -148,37 +285,25 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-6xl gap-6 py-12 lg:grid-cols-3 lg:gap-8">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center">
+          {/* Executive Team */}
+          <div className="mx-auto grid max-w-3xl gap-6 py-8 grid-cols-1 sm:grid-cols-2">
+            {executiveTeam.map((member) => (
+              <Card key={member.name} className="text-center w-56 mx-auto">
                 <CardContent className="p-6">
-                  <Avatar className="w-24 h-24 mx-auto mb-4">
-                    <AvatarImage src={member.image || "/placeholder.svg"} alt={member.name} />
-                    <AvatarFallback>
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
+                  <Avatar className="w-40 h-40 mx-auto mb-3">
+                    <AvatarImage src={member.image} alt={member.name} />
+                    <AvatarFallback>{member.name[0]}</AvatarFallback>
                   </Avatar>
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <Badge variant="secondary" className="mb-3">
-                    {member.role}
-                  </Badge>
-                  <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
-                  <div className="flex justify-center space-x-2">
-                    <Button variant="ghost" size="icon">
-                      <Mail className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Twitter className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+                  <Badge variant="secondary">{member.role}</Badge>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+          {/* Divisions */}
+          <div className="mx-auto grid max-w-6xl gap-6 py-12 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            {divisions.map((division) => (
+              <DivisionCard key={division.name} division={division} />
             ))}
           </div>
         </div>
