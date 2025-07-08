@@ -33,34 +33,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="flex flex-col items-center space-y-2">
-              <Users className="h-8 w-8 text-purple-600" />
-              <div className="text-2xl font-bold">500+</div>
-              <div className="text-sm text-muted-foreground">Members</div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <Calendar className="h-8 w-8 text-purple-600" />
-              <div className="text-2xl font-bold">50+</div>
-              <div className="text-sm text-muted-foreground">Events</div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <Award className="h-8 w-8 text-purple-600" />
-              <div className="text-2xl font-bold">25+</div>
-              <div className="text-sm text-muted-foreground">Awards</div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <BookOpen className="h-8 w-8 text-purple-600" />
-              <div className="text-2xl font-bold">100+</div>
-              <div className="text-sm text-muted-foreground">Workshops</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Event */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900">
         <div className="container px-4 md:px-6">
