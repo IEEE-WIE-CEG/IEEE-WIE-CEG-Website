@@ -7,6 +7,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "IEEE WIE CEG",
   description: "IEEE WIE CEG Official Website",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
