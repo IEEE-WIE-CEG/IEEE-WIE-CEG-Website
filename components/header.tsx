@@ -8,7 +8,7 @@ export function Header() {
         <Frame className="w-7 h-7 text-white" />
         <span className="hidden sm:inline">IEEE WIE CEG</span>
       </Link>
-      <nav className="flex-1 flex justify-center">
+      <nav className="flex-1 flex justify-start">
         <ul className="flex gap-6 md:gap-8 lg:gap-10 items-center">
           <li>
             <Link href="/" className="transition-colors text-purple-100 hover:text-white font-medium px-2 py-1 rounded-md hover:bg-white/10">
