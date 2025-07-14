@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export function Header() {
   return (
-    <header className="flex items-center h-16 px-6 border-b bg-purple-700 shadow-sm">
+    <header className="sticky top-0 z-50 flex items-center h-16 px-6 border-b bg-purple-700 shadow-sm">
       <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-white mr-8">
         <Frame className="w-7 h-7 text-white" />
         <span className="hidden sm:inline">IEEE WIE CEG</span>

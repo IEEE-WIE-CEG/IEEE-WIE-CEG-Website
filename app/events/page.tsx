@@ -4,121 +4,65 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin, Clock, Users } from "lucide-react"
 import { EventsCalendar } from "@/components/events-calendar"
+import { events as allEvents, EventData } from "@/lib/events-data"
+import Link from "next/link"
 
 export default function EventsPage() {
-  const upcomingEvents = [
-    {
-      title: "AI & Machine Learning Workshop",
-      date: "March 15, 2024",
-      time: "2:00 PM - 5:00 PM",
-      location: "Engineering Building, Room 101",
-      attendees: 45,
-      description: "Hands-on workshop covering fundamentals of AI and ML with practical exercises.",
-      category: "Workshop",
-    },
-    {
-      title: "Women in Tech Panel Discussion",
-      date: "March 22, 2024",
-      time: "6:00 PM - 8:00 PM",
-      location: "Main Auditorium",
-      attendees: 120,
-      description: "Panel discussion with industry leaders sharing their experiences and insights.",
-      category: "Panel",
-    },
-    {
-      title: "Coding Bootcamp",
-      date: "April 5, 2024",
-      time: "9:00 AM - 4:00 PM",
-      location: "Computer Lab A",
-      attendees: 30,
-      description: "Intensive coding bootcamp covering web development fundamentals.",
-      category: "Bootcamp",
-    },
-    {
-      title: "Robotics Workshop",
-      date: "April 12, 2024",
-      time: "1:00 PM - 4:00 PM",
-      location: "Robotics Lab",
-      attendees: 25,
-      description: "Build and program your own robot in this hands-on workshop.",
-      category: "Workshop",
-    },
-    {
-      title: "Career Networking Event",
-      date: "April 18, 2024",
-      time: "5:00 PM - 8:00 PM",
-      location: "Student Center",
-      attendees: 80,
-      description: "Network with industry professionals and explore career opportunities.",
-      category: "Networking",
-    },
-  ]
+  // Helper to filter events by date
+  const today = new Date()
+  const toDate = (dateStr: string) => new Date(dateStr)
+  const isUpcoming = (event: EventData) => toDate(event.date) > today
+  const isCurrent = (event: EventData) => toDate(event.date).toDateString() === today.toDateString()
+  const isPast = (event: EventData) => toDate(event.date) < today
 
-  const currentEvents = [
-    {
-      title: "IEEE WIE Membership Drive",
-      date: "March 1-31, 2024",
-      time: "All Day",
-      location: "Campus Wide",
-      attendees: 200,
-      description: "Join IEEE WIE and become part of our growing community.",
-      category: "Campaign",
-    },
-  ]
-
-  const pastEvents = [
-    {
-      title: "Robotics Competition",
-      date: "February 20, 2024",
-      time: "10:00 AM - 6:00 PM",
-      location: "Engineering Lab",
-      attendees: 80,
-      description: "Annual robotics competition showcasing student innovations.",
-      category: "Competition",
-    },
-    {
-      title: "Career Fair",
-      date: "February 10, 2024",
-      time: "1:00 PM - 6:00 PM",
-      location: "Student Center",
-      attendees: 300,
-      description: "Connect with top employers and explore career opportunities.",
-      category: "Career",
-    },
-  ]
+  const upcomingEvents = allEvents.filter(isUpcoming)
+  const currentEvents = allEvents.filter(isCurrent)
+  const pastEvents = allEvents.filter(isPast)
 
   const EventCard = ({ event }: { event: any }) => (
     <Card className="mb-4">
-      <CardHeader>
-        <div className="flex justify-between items-start">
-          <CardTitle className="text-xl">{event.title}</CardTitle>
-          <Badge variant="secondary">{event.category}</Badge>
+      <div className="flex flex-col md:flex-row gap-6 items-stretch">
+        {event.poster && (
+          <div className="md:w-1/3 w-full flex-shrink-0 flex items-center justify-center">
+            <img src={event.poster} alt={event.title + " poster"} className="rounded-lg object-cover w-full h-48 md:h-full" />
+          </div>
+        )}
+        <div className="flex-1 flex flex-col justify-between p-4">
+          <div>
+            <div className="flex justify-between items-start mb-2">
+              <CardTitle className="text-xl">{event.title}</CardTitle>
+              <Badge variant="secondary">{event.category}</Badge>
+            </div>
+            <div className="flex flex-wrap gap-4 mb-2 text-gray-600 text-sm">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>{event.date}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                <span>{event.time}</span>
+              </div>
+              {event.location && (
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>{event.location}</span>
+                </div>
+              )}
+            </div>
+            {event.description && <p className="text-muted-foreground mb-4">{event.description}</p>}
+          </div>
+          <div className="mt-2 flex gap-2">
+            <Link href={`/events/${event.id}`}>
+              <Button>View Details</Button>
+            </Link>
+            {event.registrationLink && (
+              <Link href={event.registrationLink} target="_blank">
+                <Button variant="outline">Register</Button>
+              </Link>
+            )}
+          </div>
         </div>
-      </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground mb-4">{event.description}</p>
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4" />
-            <span>{event.date}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4" />
-            <span>{event.time}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
-            <span>{event.location}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Users className="h-4 w-4" />
-            <span>{event.attendees} attendees</span>
-          </div>
-        </div>
-        <div className="mt-4">
-          <Button>Learn More</Button>
-        </div>
-      </CardContent>
+      </div>
     </Card>
   )
 
@@ -161,27 +105,39 @@ export default function EventsPage() {
             <TabsContent value="upcoming" className="mt-8">
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold">Upcoming Events</h2>
-                {upcomingEvents.map((event, index) => (
-                  <EventCard key={index} event={event} />
-                ))}
+                {upcomingEvents.length === 0 ? (
+                  <p className="text-muted-foreground">No upcoming events at the moment.</p>
+                ) : (
+                  upcomingEvents.map((event, index) => (
+                    <EventCard key={event.id || index} event={event} />
+                  ))
+                )}
               </div>
             </TabsContent>
 
             <TabsContent value="current" className="mt-8">
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold">Current Events</h2>
-                {currentEvents.map((event, index) => (
-                  <EventCard key={index} event={event} />
-                ))}
+                {currentEvents.length === 0 ? (
+                  <p className="text-muted-foreground">No current events at the moment.</p>
+                ) : (
+                  currentEvents.map((event, index) => (
+                    <EventCard key={event.id || index} event={event} />
+                  ))
+                )}
               </div>
             </TabsContent>
 
             <TabsContent value="past" className="mt-8">
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold">Past Events</h2>
-                {pastEvents.map((event, index) => (
-                  <EventCard key={index} event={event} />
-                ))}
+                {pastEvents.length === 0 ? (
+                  <p className="text-muted-foreground">No past events to display.</p>
+                ) : (
+                  pastEvents.map((event, index) => (
+                    <EventCard key={event.id || index} event={event} />
+                  ))
+                )}
               </div>
             </TabsContent>
           </Tabs>

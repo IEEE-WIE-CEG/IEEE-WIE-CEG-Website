@@ -9,6 +9,10 @@ export function Footer() {
           <nav className="flex flex-wrap gap-4 justify-center md:justify-start text-sm font-semibold uppercase tracking-wide">
             <Link href="/" className="hover:underline">Home</Link>
             <span className="hidden md:inline">|</span>
+            <Link href="/about" className="hover:underline">About Us</Link>
+            <span className="hidden md:inline">|</span>
+            <Link href="/contact" className="hover:underline">Join</Link>
+            <span className="hidden md:inline">|</span>
             <Link href="https://www.ieee.org/sitemap.html" className="hover:underline" target="_blank" rel="noopener noreferrer">Sitemap</Link>
             <span className="hidden md:inline">|</span>
             <Link href="https://www.ieee.org/accessibility_statement.html" className="hover:underline" target="_blank" rel="noopener noreferrer">Accessibility</Link>

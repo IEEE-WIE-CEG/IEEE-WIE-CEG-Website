@@ -4,82 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
-
-interface Event {
-  id: string
-  title: string
-  date: Date
-  time: string
-  category: string
-  color: string
-}
-
-const events: Event[] = [
-  {
-    id: "1",
-    title: "AI Workshop",
-    date: new Date(2024, 2, 15), // March 15, 2024
-    time: "2:00 PM",
-    category: "Workshop",
-    color: "bg-blue-500",
-  },
-  {
-    id: "2",
-    title: "Panel Discussion",
-    date: new Date(2024, 2, 22), // March 22, 2024
-    time: "6:00 PM",
-    category: "Panel",
-    color: "bg-green-500",
-  },
-  {
-    id: "3",
-    title: "Coding Bootcamp",
-    date: new Date(2024, 3, 5), // April 5, 2024
-    time: "9:00 AM",
-    category: "Bootcamp",
-    color: "bg-purple-500",
-  },
-  {
-    id: "4",
-    title: "Robotics Workshop",
-    date: new Date(2024, 3, 12), // April 12, 2024
-    time: "1:00 PM",
-    category: "Workshop",
-    color: "bg-blue-500",
-  },
-  {
-    id: "5",
-    title: "Career Fair",
-    date: new Date(2024, 3, 18), // April 18, 2024
-    time: "5:00 PM",
-    category: "Career",
-    color: "bg-orange-500",
-  },
-  {
-    id: "6",
-    title: "Tech Talk",
-    date: new Date(2024, 3, 25), // April 25, 2024
-    time: "3:00 PM",
-    category: "Seminar",
-    color: "bg-red-500",
-  },
-  {
-    id: "7",
-    title: "Networking Event",
-    date: new Date(2024, 4, 8), // May 8, 2024
-    time: "6:00 PM",
-    category: "Networking",
-    color: "bg-teal-500",
-  },
-  {
-    id: "8",
-    title: "Innovation Showcase",
-    date: new Date(2024, 4, 15), // May 15, 2024
-    time: "4:00 PM",
-    category: "Exhibition",
-    color: "bg-pink-500",
-  },
-]
+import { events as eventsData, EventData } from "@/lib/events-data"
 
 export function EventsCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
@@ -126,7 +51,10 @@ export function EventsCalendar() {
 
   const getEventsForDate = (date: Date | null) => {
     if (!date) return []
-    return events.filter((event) => event.date.toDateString() === date.toDateString())
+    return eventsData.filter((event) => {
+      const eventDate = new Date(event.date)
+      return eventDate.toDateString() === date.toDateString()
+    })
   }
 
   const navigateMonth = (direction: "prev" | "next") => {

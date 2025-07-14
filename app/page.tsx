@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Users, Award, BookOpen } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -21,12 +22,15 @@ export default function Home() {
               </p>
             </div>
             <div className="space-x-4">
-              <Button className="bg-white text-purple-600 hover:bg-gray-100">Join Us</Button>
+              <Button className="bg-white text-purple-600 hover:bg-gray-100" asChild>
+                <Link href="/contact">Join Us</Link>
+              </Button>
               <Button
                 variant="outline"
                 className="text-white border-white hover:bg-white hover:text-purple-600 bg-transparent"
+                asChild
               >
-                Learn More
+                <Link href="/about">Learn More</Link>
               </Button>
             </div>
           </div>
@@ -84,8 +88,8 @@ export default function Home() {
                 <p className="text-muted-foreground">
                   Learn about our mission, vision, and the impact we're making in the engineering community.
                 </p>
-                <Button variant="link" className="mt-4 p-0">
-                  Read More →
+                <Button variant="link" className="mt-4 p-0" asChild>
+                  <Link href="/about">Read More →</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -97,8 +101,8 @@ export default function Home() {
                 <p className="text-muted-foreground">
                   Discover the benefits of joining our network and how it can advance your career.
                 </p>
-                <Button variant="link" className="mt-4 p-0">
-                  Explore Benefits →
+                <Button variant="link" className="mt-4 p-0" asChild>
+                  <Link href="/contact">Explore Benefits →</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -110,8 +114,8 @@ export default function Home() {
                 <p className="text-muted-foreground">
                   Check out photos and highlights from our past events and activities.
                 </p>
-                <Button variant="link" className="mt-4 p-0">
-                  View Gallery →
+                <Button variant="link" className="mt-4 p-0" asChild>
+                  <Link href="/gallery">View Gallery →</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -126,6 +130,11 @@ export default function Home() {
           <p className="text-muted-foreground text-base md:text-lg">
             IEEE Women in Engineering (WIE) is one of the largest international professional organisations dedicated to promoting women engineers and scientists, and inspiring girls around the world to follow their academic interests to a career in engineering. The WIE student membership is free if you are already an IEEE member. If not, take IEEE membership <a href="https://www.ieee.org/membership/join/index.html" className="text-purple-600 underline" target="_blank" rel="noopener noreferrer">here</a> and join the WIE affinity group for free. If you are interested in promoting women, both within the IEEE and in the engineering industry, WIE is for you. Get the benefits of the IEEE membership and participate in our activities.
           </p>
+          <div className="mt-4">
+            <Button asChild>
+              <Link href="/contact">Join Now</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </main>
