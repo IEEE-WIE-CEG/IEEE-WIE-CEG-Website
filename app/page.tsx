@@ -4,8 +4,15 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Users, Award, BookOpen } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { events as allEvents } from "@/lib/events-data"
 
 export default function Home() {
+  // Find the latest upcoming event
+  const today = new Date()
+  const toDate = (dateStr: string) => new Date(dateStr)
+  const upcomingEvents = allEvents.filter(e => toDate(e.date) > today)
+  const nextEvent = upcomingEvents.sort((a, b) => toDate(a.date).getTime() - toDate(b.date).getTime())[0]
+
   return (
     <main className="flex-1">
       {/* Hero Section */}
@@ -40,31 +47,51 @@ export default function Home() {
       {/* Featured Event */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <Badge className="w-fit">Featured Event</Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">AI & Machine Learning Workshop</h2>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join us for an exciting hands-on workshop exploring the fundamentals of AI and Machine Learning. Learn
-                  to build your own models and discover real-world applications.
-                </p>
+          {nextEvent ? (
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <Badge className="w-fit">Upcoming Event</Badge>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{nextEvent.title}</h2>
+                  {nextEvent.tagline && <p className="text-lg text-purple-700 font-semibold">{nextEvent.tagline}</p>}
+                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    {nextEvent.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4 text-gray-600 text-sm mt-2">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{nextEvent.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>•</span>
+                      <span>{nextEvent.time}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  {nextEvent.registrationLink && (
+                    <Button asChild>
+                      <Link href={nextEvent.registrationLink} target="_blank">Register Now</Link>
+                    </Button>
+                  )}
+                  <Button variant="outline" asChild>
+                    <Link href={`/events/${nextEvent.id}`}>Learn More</Link>
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button>Register Now</Button>
-                <Button variant="outline">Learn More</Button>
+              <div className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last">
+                <Image
+                  src={nextEvent.poster || "/placeholder.jpg"}
+                  alt={nextEvent.title}
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-full"
+                />
               </div>
             </div>
-            <div className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last">
-              <Image
-                src="/placeholder.svg?height=400&width=600"
-                alt="AI Workshop"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">No upcoming events at the moment.</div>
+          )}
         </div>
       </section>
 
