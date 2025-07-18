@@ -25,6 +25,7 @@ router.post('/', async (req: Request, res: Response) => {
       from: process.env.EMAIL_USER,
       to: process.env.TO_EMAIL,
       subject: `IEEE-WIE Contact: ${subject} - From ${fullName}`,
+      replyTo: email,
       text: `
 New message from IEEE-WIE Contact Form:
 
