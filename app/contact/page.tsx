@@ -1,11 +1,65 @@
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { useState } from "react"
 
 export default function ContactPage() {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    department: "",
+    university: "",
+    subject: "",
+    message: "",
+  })
+
+  const [loading, setLoading] = useState(false)
+  const [responseMsg, setResponseMsg] = useState("")
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setResponseMsg("")
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+
+      if (data.success) {
+        setResponseMsg("✅ Message sent successfully!")
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          department: "",
+          university: "",
+          subject: "",
+          message: "",
+        })
+      } else {
+        setResponseMsg("❌ Failed to send: " + data.message)
+      }
+    } catch (error) {
+      setResponseMsg("❌ Something went wrong. Please try again later.")
+    }
+
+    setLoading(false)
+  }
+
   return (
     <main className="flex-1">
       {/* Hero Section */}
@@ -36,38 +90,87 @@ export default function ContactPage() {
                   Have questions about our events, membership, or want to collaborate? We'd love to hear from you.
                 </p>
               </div>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="first-name">First Name</Label>
-                    <Input id="first-name" placeholder="Enter your first name" />
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      id="firstName"
+                      placeholder="Enter your first name"
+                      value={form.firstName}
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="last-name">Last Name</Label>
-                    <Input id="last-name" placeholder="Enter your last name" />
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input
+                      id="lastName"
+                      placeholder="Enter your last name"
+                      value={form.lastName}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={form.email}
+                    onChange={handleChange}
+                  />
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="department">Department</Label>
-                  <Input id="department" placeholder="Your department/field of study" />
+                  <Input
+                    id="department"
+                    placeholder="Your department/field of study"
+                    value={form.department}
+                    onChange={handleChange}
+                  />
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="university">University/Organization</Label>
-                  <Input id="university" placeholder="Your university or organization" />
+                  <Input
+                    id="university"
+                    placeholder="Your university or organization"
+                    value={form.university}
+                    onChange={handleChange}
+                  />
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="What is this regarding?" />
+                  <Input
+                    id="subject"
+                    placeholder="What is this regarding?"
+                    value={form.subject}
+                    onChange={handleChange}
+                  />
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Tell us more about your inquiry..." rows={6} />
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us more about your inquiry..."
+                    rows={6}
+                    value={form.message}
+                    onChange={handleChange}
+                  />
                 </div>
-                <Button className="w-full">Send Message</Button>
+
+                <Button className="w-full" type="submit" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"}
+                </Button>
+
+                {responseMsg && (
+                  <p className="text-sm text-center text-muted-foreground">{responseMsg}</p>
+                )}
               </form>
             </div>
 
