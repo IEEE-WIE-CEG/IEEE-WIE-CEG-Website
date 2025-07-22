@@ -1,11 +1,17 @@
-import { Frame } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 flex items-center h-16 px-6 border-b bg-purple-700 shadow-sm">
+    <header className="sticky top-0 z-50 flex items-center h-20 px-6 border-b bg-purple-700 shadow-sm">
       <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-white mr-8">
-        <Frame className="w-7 h-7 text-white" />
+        <Image
+          src="/logo2.png"
+          alt="IEEE WIE CEG Logo"
+          width={80}
+          height={80}
+          className="w-24 h-19"
+        />
         <span className="hidden sm:inline">IEEE WIE CEG</span>
       </Link>
       <nav className="flex-1 flex justify-start">
