@@ -57,7 +57,10 @@ export default function OperationTrinetraPage() {
                 DETECT • DEFEND • DISMANTLE
               </p>
               <p className="text-lg text-purple-400 max-w-3xl leading-relaxed">
-                A 24-hour defense-focused hackathon challenging students to develop innovative cybersecurity solutions for India's digital defense infrastructure.
+                A 24-hour defense-focused hackathon challenging students to develop innovative tech solutions that directly aid the nation's defense ecosystem in fighting digital threats and securing mission-critical infrastructure.
+              </p>
+              <p className="text-base text-purple-300 max-w-3xl leading-relaxed mt-4">
+                In today's digital battlefield, cyber threats are as dangerous as physical attacks. Trinetra focuses on crafting solutions that protect our armed forces' digital infrastructure, fortify national cybersecurity, and build tech that serves our soldiers and citizens on and off the field.
               </p>
             </div>
 
@@ -166,7 +169,7 @@ export default function OperationTrinetraPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-12 drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
-              Participation Benefits
+              Why Participate?
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -175,11 +178,11 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-red-600/20 border border-red-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-600/30 group-hover:border-red-500/50 transition-all duration-300">
                     <Shield className="h-6 w-6 text-red-500 group-hover:text-red-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">National Security Impact</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Tackle Real-World Vulnerabilities</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-pink-200 transition-colors">
-                    Address real-world vulnerabilities in defense systems and contribute to India's cybersecurity infrastructure.
+                    Work on problem tracks that matter to national security and defense systems.
                   </p>
                 </CardContent>
               </Card>
@@ -189,11 +192,11 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-blue-600/20 border border-blue-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 group-hover:border-blue-500/50 transition-all duration-300">
                     <Users className="h-6 w-6 text-blue-500 group-hover:text-blue-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Industry Mentorship</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Mentorship from Alumni</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-blue-200 transition-colors">
-                    Guidance from accomplished alumni and industry professionals with defense sector experience.
+                    Gain insights from accomplished alumni with industry experience.
                   </p>
                 </CardContent>
               </Card>
@@ -203,11 +206,11 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-yellow-600/20 border border-yellow-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-yellow-600/30 group-hover:border-yellow-500/50 transition-all duration-300">
                     <Trophy className="h-6 w-6 text-yellow-500 group-hover:text-yellow-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Recognition & Rewards</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Prize Pool Worth ₹20,000+</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-yellow-200 transition-colors">
-                    Prize pool of ₹20,000+ with certificates and potential internship opportunities.
+                    Win exciting cash prizes and recognition for your innovation.
                   </p>
                 </CardContent>
               </Card>
@@ -217,39 +220,25 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-emerald-600/20 border border-emerald-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600/30 group-hover:border-emerald-500/50 transition-all duration-300">
                     <Network className="h-6 w-6 text-emerald-500 group-hover:text-emerald-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Professional Network</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Network with Innovators</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-emerald-200 transition-colors">
-                    Connect with defense-tech innovators and cybersecurity professionals across India.
+                    Collaborate with like-minded peers solving real-world problems in defense-tech space.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-orange-950/20 hover:border-orange-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-1 group cursor-pointer">
-                <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-orange-600/20 border border-orange-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-600/30 group-hover:border-orange-500/50 transition-all duration-300">
-                    <Briefcase className="h-6 w-6 text-orange-500 group-hover:text-orange-400 transition-colors" />
-                  </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Career Advancement</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-purple-300 text-sm leading-relaxed group-hover:text-orange-200 transition-colors">
-                    Access to internships, job opportunities, and career guidance from industry leaders.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-violet-950/20 hover:border-violet-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/20 hover:-translate-y-1 group cursor-pointer">
+              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-violet-950/20 hover:border-violet-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/20 hover:-translate-y-1 group cursor-pointer lg:col-span-2">
                 <CardHeader className="pb-4">
                   <div className="w-12 h-12 bg-violet-600/20 border border-violet-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-violet-600/30 group-hover:border-violet-500/50 transition-all duration-300">
                     <Award className="h-6 w-6 text-violet-500 group-hover:text-violet-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Professional Recognition</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Certificate of Participation for All</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-violet-200 transition-colors">
-                    Official certification and recognition for contributing to India's digital defense mission.
+                    Get recognized for contributing to India's digital defense mission.
                   </p>
                 </CardContent>
               </Card>
@@ -417,7 +406,7 @@ export default function OperationTrinetraPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-12 drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
-              Assessment Framework
+              Evaluation Snapshot
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -450,7 +439,7 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-red-600/20 border border-red-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-600/30 group-hover:border-red-500/50 transition-all duration-300">
                     <Shield className="h-6 w-6 text-red-500 group-hover:text-red-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Defense Sector Relevance</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Relevance to Indian Defense</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-red-200 transition-colors">Applicability to Indian defense and cybersecurity challenges</p>
@@ -462,7 +451,7 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-emerald-600/20 border border-emerald-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600/30 group-hover:border-emerald-500/50 transition-all duration-300">
                     <Target className="h-6 w-6 text-emerald-500 group-hover:text-emerald-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Scalability & Feasibility</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Feasibility & Scalability</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-emerald-200 transition-colors">Real-world implementation potential and growth capacity</p>
@@ -474,7 +463,7 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-orange-600/20 border border-orange-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-600/30 group-hover:border-orange-500/50 transition-all duration-300">
                     <Eye className="h-6 w-6 text-orange-500 group-hover:text-orange-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Security Architecture</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Security Strength</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-orange-200 transition-colors">Robustness of security measures and threat mitigation</p>
@@ -486,7 +475,7 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-violet-600/20 border border-violet-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-violet-600/30 group-hover:border-violet-500/50 transition-all duration-300">
                     <Award className="h-6 w-6 text-violet-500 group-hover:text-violet-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Presentation Quality</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Presentation & Clarity</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-violet-200 transition-colors">Communication clarity and demonstration effectiveness</p>
@@ -508,65 +497,16 @@ export default function OperationTrinetraPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-12 drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
-              Mentorship Program
+              Mentorship
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-blue-950/20 hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 group cursor-pointer">
-                <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-blue-600/20 border border-blue-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 group-hover:border-blue-500/50 transition-all duration-300">
-                    <Users className="h-6 w-6 text-blue-500 group-hover:text-blue-400 transition-colors" />
-                  </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Alumni Network</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-purple-300 text-sm leading-relaxed group-hover:text-blue-200 transition-colors">
-                    Accomplished alumni with defense sector experience providing strategic guidance.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-emerald-950/20 hover:border-emerald-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 hover:-translate-y-1 group cursor-pointer">
-                <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-emerald-600/20 border border-emerald-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600/30 group-hover:border-emerald-500/50 transition-all duration-300">
-                    <Target className="h-6 w-6 text-emerald-500 group-hover:text-emerald-400 transition-colors" />
-                  </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Industry Experts</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-purple-300 text-sm leading-relaxed group-hover:text-emerald-200 transition-colors">
-                    Cybersecurity professionals providing technical and strategic guidance throughout.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-orange-950/20 hover:border-orange-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-1 group cursor-pointer">
-                <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-orange-600/20 border border-orange-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-600/30 group-hover:border-orange-500/50 transition-all duration-300">
-                    <CheckCircle className="h-6 w-6 text-orange-500 group-hover:text-orange-400 transition-colors" />
-                  </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Progress Reviews</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-purple-300 text-sm leading-relaxed group-hover:text-orange-200 transition-colors">
-                    Regular checkpoint assessments and technical architecture optimization.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-purple-950/30 border-purple-700/50 hover:bg-violet-950/20 hover:border-violet-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/20 hover:-translate-y-1 group cursor-pointer">
-                <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-violet-600/20 border border-violet-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-violet-600/30 group-hover:border-violet-500/50 transition-all duration-300">
-                    <Briefcase className="h-6 w-6 text-violet-500 group-hover:text-violet-400 transition-colors" />
-                  </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Career Guidance</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-purple-300 text-sm leading-relaxed group-hover:text-violet-200 transition-colors">
-                    Professional networking and pathways into defense technology careers.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="bg-purple-950/30 border border-purple-700/50 rounded-lg p-8">
+              <p className="text-purple-200 leading-relaxed mb-6 text-center">
+                Participants will receive guidance from alumni mentors, who will help shape, refine, and ground ideas in practical defense applications.
+              </p>
+              <p className="text-purple-300 leading-relaxed text-center">
+                These mentors serve as bridges between ideas and real-world use-cases.
+              </p>
             </div>
           </div>
         </div>
@@ -577,16 +517,12 @@ export default function OperationTrinetraPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-12 drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
-              Partnership Opportunities
+              Sponsorship Opportunities
             </h2>
 
             <div className="mb-12 bg-purple-950/30 border border-purple-700/50 rounded-lg p-8">
-              <h3 className="text-xl font-semibold text-purple-100 mb-4">Strategic Partnership Benefits</h3>
-              <p className="text-purple-200 leading-relaxed mb-4">
-                Partner with Operation Trinetra to support national cybersecurity initiatives while gaining access to India's emerging defense technology talent pool.
-              </p>
-              <p className="text-purple-300 text-sm">
-                Align your organization with national defense priorities and contribute to India's digital security infrastructure development.
+              <p className="text-purple-200 leading-relaxed mb-4 text-center">
+                Support a national cause while gaining access to India's top tech talent.
               </p>
             </div>
 
@@ -600,7 +536,7 @@ export default function OperationTrinetraPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-blue-200 transition-colors">
-                    Comprehensive brand exposure across event promotions, digital platforms, and participant communications.
+                    Brand visibility across promotions and event collaterals.
                   </p>
                 </CardContent>
               </Card>
@@ -610,11 +546,11 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-emerald-600/20 border border-emerald-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600/30 group-hover:border-emerald-500/50 transition-all duration-300">
                     <Users className="h-6 w-6 text-emerald-500 group-hover:text-emerald-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Talent Pipeline</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Curated Talent Pool</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-emerald-200 transition-colors">
-                    Direct access to skilled cybersecurity professionals and defense technology innovators.
+                    Access to a curated pool of cybersecurity innovators.
                   </p>
                 </CardContent>
               </Card>
@@ -624,11 +560,11 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-orange-600/20 border border-orange-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-600/30 group-hover:border-orange-500/50 transition-all duration-300">
                     <Briefcase className="h-6 w-6 text-orange-500 group-hover:text-orange-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Recruitment</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Engagement Opportunities</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-orange-200 transition-colors">
-                    Opportunity to offer internships, full-time positions, and collaborative projects.
+                    Opportunity to offer internships, goodies, or prizes.
                   </p>
                 </CardContent>
               </Card>
@@ -638,11 +574,11 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-pink-600/20 border border-pink-600/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-pink-600/30 group-hover:border-pink-500/50 transition-all duration-300">
                     <Heart className="h-6 w-6 text-pink-500 group-hover:text-pink-400 transition-colors" />
                   </div>
-                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">CSR Impact</CardTitle>
+                  <CardTitle className="text-pink-200 text-lg group-hover:text-white transition-colors">Strategic CSR Alignment</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-purple-300 text-sm leading-relaxed group-hover:text-pink-200 transition-colors">
-                    Meaningful contribution to national security and cybersecurity education initiatives.
+                    Strategic CSR alignment with national defense and digital safety.
                   </p>
                 </CardContent>
               </Card>
