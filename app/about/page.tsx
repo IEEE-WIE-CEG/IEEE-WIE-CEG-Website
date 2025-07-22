@@ -54,16 +54,31 @@ export default function AboutPage() {
     },
   ]
 
-  const executiveTeam = [
+  const coreMembers = [
     {
       name: "Rakshitha",
-      role: "Head",
-      image: "/placeholder.svg?height=100&width=100",
+      role: "President",
+      image: "/members/Rakshitha.jpg",
     },
     {
-      name: "Swayam",
-      role: "Treasurer",
-      image: "/placeholder.svg?height=100&width=100",
+      name: "Swayamprabha",
+      role: "Vice President",
+      image: "/members/swayam.jpg",
+    },
+    {
+      name: "Keerthana",
+      role: "Secretary",
+      image: "/members/keerthanaa.jpg",
+    },
+    {
+      name: "Roshan",
+      role: "Execom Member",
+      image: "/members/Roshan Kumar.jpg",
+    },
+    {
+      name: "Aadhisesha",
+      role: "Execom Member",
+      image: "/members/Aadhisesha.jpg",
     },
   ]
 
@@ -93,27 +108,30 @@ export default function AboutPage() {
     },
     {
       name: "Events",
-      head: { name: "Swetha R Barade", image: "/placeholder.svg?height=100&width=100" },
-      deputy: { name: "Aanisa Maryam", image: "/placeholder.svg?height=100&width=100" },
+      head: { name: "Swetha R Barade", image: "/members/Swetha-R-Barade.jpg" },
+      deputy: { name: "Aanisa Maryam", image: "/members/Anisa Mariyam.jpg" },
       members: [
-        { name: "Roshon R", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Aarya Malviya", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Roshon R", image: "/members/Roshan-support-events-member.jpg" },
+        { name: "Aarya Malviya", image: "/members/Aarya Malviya.jpg" },
       ],
     },
     {
       name: "Industrial Relations",
-      head: { name: "Jeevitha T", image: "/placeholder.svg?height=100&width=100" },
-      deputy: { name: "Veda Varshini R", image: "/placeholder.svg?height=100&width=100" },
+      head: { name: "Jeevitha T", image: "/members/jeevetha.jpg" },
+      deputy: { name: "Veda Varshini R", image: "/members/Veda Varshini image-ieee.jpeg" },
       members: [
-        { name: "K. Mega Sree", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Praveen S", image: "/placeholder.svg?height=100&width=100" },
+        { name: "K. Mega Sree", image: "/members/megasree.k_ industrial relations member.jpg" },
+        { name: "Praveen S", image: "/members/praveen S .jpg" },
       ],
     },
     {
       name: "Design",
-      head: { name: "Srilekha Ramkumar", image: "/placeholder.svg?height=100&width=100" },
-      deputy: { name: "Akshara Achuthan", image: "/placeholder.svg?height=100&width=100" },
-      members: [],
+      head: { name: "Srilekha Ramkumar", image: "/members/Srilekha Ramkumar.jpeg" },
+      deputy: { name: "Akshara Achuthan", image: "/members/Akshara.jpeg" },
+      members: [
+        { name: "Praveena", image: "/members/Praveena R.jpeg" },
+        { name: "Sitheshwar", image: "/members/Sithishwar.JPG" },
+      ],
     },
   ]
 
@@ -285,20 +303,38 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          {/* Executive Team */}
-          <div className="mx-auto grid max-w-3xl gap-6 py-8 grid-cols-1 sm:grid-cols-2">
-            {executiveTeam.map((member) => (
-              <Card key={member.name} className="text-center w-56 mx-auto">
-                <CardContent className="p-6">
-                  <Avatar className="w-40 h-40 mx-auto mb-3">
-                    <AvatarImage src={member.image} alt={member.name} />
-                    <AvatarFallback>{member.name[0]}</AvatarFallback>
-                  </Avatar>
-                  <h3 className="text-lg font-bold mb-1">{member.name}</h3>
-                  <Badge variant="secondary">{member.role}</Badge>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Core Members */}
+          <div className="mx-auto max-w-5xl py-8">
+            {/* Top row - 3 members */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 justify-items-center">
+              {coreMembers.slice(0, 3).map((member) => (
+                <Card key={member.name} className="text-center w-56">
+                  <CardContent className="p-6">
+                    <Avatar className="w-40 h-40 mx-auto mb-3 rounded-lg">
+                      <AvatarImage src={member.image} alt={member.name} className="rounded-lg" />
+                      <AvatarFallback className="rounded-lg">{member.name[0]}</AvatarFallback>
+                    </Avatar>
+                    <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+                    <Badge variant="secondary">{member.role}</Badge>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            {/* Bottom row - 2 members */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto justify-items-center">
+              {coreMembers.slice(3, 5).map((member) => (
+                <Card key={member.name} className="text-center w-56">
+                  <CardContent className="p-6">
+                    <Avatar className="w-40 h-40 mx-auto mb-3 rounded-lg">
+                      <AvatarImage src={member.image} alt={member.name} className="rounded-lg" />
+                      <AvatarFallback className="rounded-lg">{member.name[0]}</AvatarFallback>
+                    </Avatar>
+                    <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+                    <Badge variant="secondary">{member.role}</Badge>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
           {/* Divisions */}
           <div className="mx-auto grid max-w-6xl gap-6 py-12 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
