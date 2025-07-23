@@ -6,8 +6,8 @@ import "./globals.css"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "IEEE WIE CEG",
-  description: "IEEE WIE CEG Official Website",
+  title: "IEEE WIE-CEG Student Chapter",
+  description: "IEEE WIE-CEG Student Chapter Official Website",
     generator: 'v0.dev'
 }
 

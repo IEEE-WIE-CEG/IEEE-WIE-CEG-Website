@@ -7,12 +7,12 @@ export function Header() {
       <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-white mr-8">
         <Image
           src="/logo2.png"
-          alt="IEEE WIE CEG Logo"
+          alt="IEEE WIE-CEG Student Chapter Logo"
           width={80}
           height={80}
           className="w-24 h-19"
         />
-        <span className="hidden sm:inline">IEEE WIE CEG</span>
+        <span className="hidden sm:inline">IEEE WIE-CEG Student Chapter</span>
       </Link>
       <nav className="flex-1 flex justify-start">
         <ul className="flex gap-6 md:gap-8 lg:gap-10 items-center">

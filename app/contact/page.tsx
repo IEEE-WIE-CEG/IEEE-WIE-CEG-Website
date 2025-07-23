@@ -71,7 +71,7 @@ export default function ContactPage() {
                 Contact Us
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl">
-                Get in touch with IEEE WIE CEG - we'd love to hear from you!
+                Get in touch with IEEE WIE-CEG Student Chapter - we'd love to hear from you!
               </p>
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function ContactPage() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Frequently Asked Questions</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-                Quick answers to common questions about IEEE WIE CEG.
+                Quick answers to common questions about IEEE WIE-CEG Student Chapter.
               </p>
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  You can join IEEE WIE CEG by attending our membership events or contacting us directly. Membership is
+                  You can join IEEE WIE-CEG Student Chapter by attending our membership events or contacting us directly. Membership is
                   open to all students interested in engineering and technology.
                 </p>
               </CardContent>
