@@ -96,14 +96,13 @@ export default function AboutPage() {
     },
     {
       name: "Operations and Marketing",
-      head: { name: "Harshitha UR", image: "/placeholder.svg?height=100&width=100" },
+      head: { name: "Harshitha UR", image: "/members/Harshitha UR.jpg" },
       deputy: { name: "Ripika Sri R", image: "/placeholder.svg?height=100&width=100" },
       members: [
-        { name: "Shushmita K", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Akshitha Ajaykumar", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Janis Miracline A", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Murugan Ramanujam", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Abharna Shree M", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Shushmita K", image: "/members/Sushmita.png" },
+        { name: "Akshitha Ajaykumar", image: "/members/akshitha_ajaykumar.JPG" },
+        { name: "Janis Miracline A", image: "/members/Janis.jpg" },
+        { name: "Abharna Shree M", image: "/members/Abharna.jpg" },
       ],
     },
     {
