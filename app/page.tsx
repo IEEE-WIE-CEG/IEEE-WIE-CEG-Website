@@ -1,10 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Users, Award, BookOpen } from "lucide-react"
+import { Calendar, User, Clock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { events as allEvents } from "@/lib/events-data"
+import { articles as allArticles } from "@/lib/articles-data"
 
 export default function Home() {
   // Find the latest upcoming event
@@ -12,6 +13,20 @@ export default function Home() {
   const toDate = (dateStr: string) => new Date(dateStr)
   const upcomingEvents = allEvents.filter(e => toDate(e.date) > today)
   const nextEvent = upcomingEvents.sort((a, b) => toDate(a.date).getTime() - toDate(b.date).getTime())[0]
+
+  // Get latest research articles (sorted by publish date)
+  const latestArticles = [...allArticles]
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+    .slice(0, 3)
+
+  // Helper to format date
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  }
 
   return (
     <main className="flex-1">
@@ -92,6 +107,73 @@ export default function Home() {
           ) : (
             <div className="text-center py-12 text-muted-foreground">No upcoming events at the moment.</div>
           )}
+        </div>
+      </section>
+
+      {/* Latest Research Articles */}
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Latest Research Articles</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Discover cutting-edge research and insights from our talented club members
+              </p>
+            </div>
+          </div>
+          
+          {latestArticles.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+              {latestArticles.map((article) => (
+                <Card key={article.id} className="hover:shadow-lg transition-shadow flex flex-col">
+                  <CardHeader className="pb-3">
+                    <div className="flex justify-between items-start mb-2">
+                      <div className="flex flex-wrap gap-1">
+                        {article.tags.slice(0, 2).map((tag) => (
+                          <Badge key={tag} variant="secondary" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Clock className="h-3 w-3" />
+                        <span>{article.readTime}</span>
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg line-clamp-2 mb-3">
+                      <Link href={`/research/${article.id}`} className="hover:text-purple-600 transition-colors">
+                        {article.title}
+                      </Link>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0 flex flex-col flex-grow">
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-4 flex-grow">
+                      {article.excerpt}
+                    </p>
+                    <div className="mt-auto space-y-3">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <User className="h-3 w-3" />
+                        <span className="font-medium">{article.author}</span>
+                        <span>•</span>
+                        <span>{formatDate(article.publishDate)}</span>
+                      </div>
+                      <Button variant="outline" size="sm" asChild className="w-full">
+                        <Link href={`/research/${article.id}`}>Read Article</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">No research articles available at the moment.</div>
+          )}
+          
+          <div className="text-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <Button asChild>
+              <Link href="/research">View All Research Articles</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

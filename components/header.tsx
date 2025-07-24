@@ -32,6 +32,11 @@ export function Header() {
             </Link>
           </li>
           <li>
+            <Link href="/research" className="transition-colors text-purple-100 hover:text-white font-medium px-2 py-1 rounded-md hover:bg-white/10">
+              Research
+            </Link>
+          </li>
+          <li>
             <Link href="/gallery" className="transition-colors text-purple-100 hover:text-white font-medium px-2 py-1 rounded-md hover:bg-white/10">
               Gallery
             </Link>
