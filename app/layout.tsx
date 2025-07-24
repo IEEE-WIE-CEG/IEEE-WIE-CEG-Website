@@ -8,7 +8,12 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "IEEE WIE-CEG Student Chapter",
   description: "IEEE WIE-CEG Student Chapter Official Website",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/logo3.png',
+    shortcut: '/logo3.png',
+    apple: '/logo3.png',
+  },
 }
 
 export default function RootLayout({
