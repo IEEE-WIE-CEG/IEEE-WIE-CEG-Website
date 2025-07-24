@@ -124,19 +124,7 @@ export default function ResearchPage() {
         </section>
       )}
 
-      {/* Call to Action */}
-      <section className="w-full py-12 md:py-20 bg-purple-50 dark:bg-purple-900/20">
-        <div className="container px-4 md:px-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Want to Contribute?</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Are you a club member with research insights to share? We'd love to feature your work! 
-            Contact us to learn about our submission process and guidelines.
-          </p>
-          <Button asChild>
-            <Link href="/contact">Submit Your Research</Link>
-          </Button>
-        </div>
-      </section>
+
     </main>
   )
 }
