@@ -192,8 +192,7 @@ export default function ContactPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">info@ieee-wie-ceg.org</p>
-                    <p className="text-muted-foreground">president@ieee-wie-ceg.org</p>
+                    <p className="text-muted-foreground">i3ewieceg@gmail.com</p>
                   </CardContent>
                 </Card>
 
@@ -205,8 +204,7 @@ export default function ContactPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-sm text-muted-foreground">Available Mon-Fri, 9AM-5PM</p>
+                    <p className="text-muted-foreground">+91 6380383832</p>
                   </CardContent>
                 </Card>
 
@@ -230,21 +228,7 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Clock className="h-5 w-5" />
-                      Office Hours
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-1 text-muted-foreground">
-                      <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                      <p>Saturday: 10:00 AM - 2:00 PM</p>
-                      <p>Sunday: Closed</p>
-                    </div>
-                  </CardContent>
-                </Card>
+
               </div>
 
               {/* Social Media Links */}
@@ -253,20 +237,11 @@ export default function ContactPage() {
                   <CardTitle>Follow Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex space-x-4">
-                    <Button variant="outline" size="sm">
-                      LinkedIn
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      Twitter
-                    </Button>
-                    <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://www.instagram.com/ieeewieceg/" target="_blank" rel="noopener noreferrer">
                       Instagram
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      Facebook
-                    </Button>
-                  </div>
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             </div>
