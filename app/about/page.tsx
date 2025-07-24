@@ -3,8 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Mail, Linkedin, Twitter } from "lucide-react"
-import { ChevronDown, ChevronUp } from "lucide-react"
 import * as React from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
@@ -97,7 +95,7 @@ export default function AboutPage() {
     {
       name: "Operations and Marketing",
       head: { name: "Harshitha UR", image: "/members/Harshitha UR.jpg" },
-      deputy: { name: "Ripika Sri R", image: "/placeholder.svg?height=100&width=100" },
+      deputy: { name: "Ripika Sri R", image: "/members/Ripika Sri.webp" },
       members: [
         { name: "Shushmita K", image: "/members/Sushmita.png" },
         { name: "Akshitha Ajaykumar", image: "/members/akshitha_ajaykumar.JPG" },
