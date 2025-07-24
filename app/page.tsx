@@ -204,14 +204,14 @@ export default function Home() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Why Join IEEE WIE?</CardTitle>
+                <CardTitle>Get Involved</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Discover the benefits of joining our network and how it can advance your career.
+                  Ready to join our community? Connect with us and become part of our mission to empower women in engineering.
                 </p>
                 <Button variant="link" className="mt-4 p-0" asChild>
-                  <Link href="/contact">Explore Benefits →</Link>
+                  <Link href="/contact">Contact Us →</Link>
                 </Button>
               </CardContent>
             </Card>
