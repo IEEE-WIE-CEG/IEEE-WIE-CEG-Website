@@ -16,7 +16,6 @@ export interface EventData {
 }
 
 import operationTrinetra from "@/lib/events-data/operation-trinetra"
-import webDevelopmentWorkshop from "@/lib/events-data/web-development-workshop"
 
 export const events: EventData[] = [
   {
@@ -30,20 +29,7 @@ export const events: EventData[] = [
     description: operationTrinetra.description,
     // Add more summary fields as needed
   },
-  {
-    id: webDevelopmentWorkshop.id,
-    title: webDevelopmentWorkshop.title,
-    date: webDevelopmentWorkshop.date,
-    time: webDevelopmentWorkshop.time,
-    location: webDevelopmentWorkshop.location,
-    attendees: webDevelopmentWorkshop.attendees,
-    category: webDevelopmentWorkshop.category,
-    poster: webDevelopmentWorkshop.poster,
-    registrationLink: webDevelopmentWorkshop.registrationLink,
-    description: webDevelopmentWorkshop.description,
-    context: webDevelopmentWorkshop.context,
-  },
   // Add more events here as you create more files
 ]
 
-export { operationTrinetra, webDevelopmentWorkshop } 
+export { operationTrinetra } 
