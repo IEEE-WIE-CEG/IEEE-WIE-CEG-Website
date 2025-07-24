@@ -14,7 +14,6 @@ export interface ArticleData {
 }
 
 import aiInHealthcare from "@/lib/articles-data/ai-in-healthcare"
-import quantumComputing from "@/lib/articles-data/quantum-computing-future"
 import womenInTech from "@/lib/articles-data/women-in-tech-leadership"
 
 export const articles: ArticleData[] = [
@@ -31,18 +30,6 @@ export const articles: ArticleData[] = [
     abstract: aiInHealthcare.abstract,
   },
   {
-    id: quantumComputing.id,
-    title: quantumComputing.title,
-    author: quantumComputing.author,
-    authorRole: quantumComputing.authorRole,
-    publishDate: quantumComputing.publishDate,
-    readTime: quantumComputing.readTime,
-    excerpt: quantumComputing.excerpt,
-    tags: quantumComputing.tags,
-    featuredImage: quantumComputing.featuredImage,
-    abstract: quantumComputing.abstract,
-  },
-  {
     id: womenInTech.id,
     title: womenInTech.title,
     author: womenInTech.author,
@@ -57,4 +44,4 @@ export const articles: ArticleData[] = [
   // Add more articles here as you create more files
 ]
 
-export { aiInHealthcare, quantumComputing, womenInTech }
+export { aiInHealthcare, womenInTech }
