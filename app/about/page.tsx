@@ -83,12 +83,12 @@ export default function AboutPage() {
   const divisions = [
     {
       name: "Tech and Research",
-      head: { name: "Ananyaa Sivakumar", image: "/placeholder.svg?height=100&width=100" },
-      deputy: { name: "Dhanya Vikram", image: "/placeholder.svg?height=100&width=100" },
-      uiux: { name: "Vijay Krishna S", image: "/placeholder.svg?height=100&width=100" },
+      head: { name: "Ananyaa Sivakumar", image: "/members/ananya_sivakumar.jpg" },
+      deputy: { name: "Dhanya Vikram", image: "/members/dhanya_vikram.jpg" },
+      uiux: { name: "Vijay Krishna S", image: "/members/vijay_krishna_s.png" },
       members: [
-        { name: "Shibani Selvakumar", image: "/placeholder.svg?height=100&width=100" },
-        { name: "Akhshaiya S", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Shibani Selvakumar", image: "/members/shibani.jpg" },
+        { name: "Akhshaiya S", image: "/members/akshaiya.jpg" },
         { name: "Shannen Catherine A", image: "/placeholder.svg?height=100&width=100" },
       ],
     },

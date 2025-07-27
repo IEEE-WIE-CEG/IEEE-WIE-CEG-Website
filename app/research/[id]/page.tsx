@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, User, ArrowLeft, Share2 } from "lucide-react"
-import { articles, aiInHealthcare, quantumComputing, womenInTech } from "@/lib/articles-data"
+import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
+import { articles, arvrArticle, llmsBiasArticle } from "@/lib/articles-data"
 import Link from "next/link"
 import Image from "next/image"
 import ReactMarkdown from "react-markdown"
@@ -10,9 +10,8 @@ import remarkGfm from "remark-gfm"
 
 // Map of article IDs to their full data
 const articleMap = {
-  "ai-in-healthcare": aiInHealthcare,
-  "quantum-computing-future": quantumComputing,
-  "women-in-tech-leadership": womenInTech,
+  "beyond-screens-into-reality": arvrArticle,
+  "bias-toward-simplicity-llms": llmsBiasArticle,
 }
 
 export async function generateStaticParams() {
@@ -58,13 +57,13 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
 
       {/* Article Header */}
       <section className="w-full py-12 md:py-16">
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+        <div className="container px-4 md:px-6 max-w-6xl mx-auto">
           <div className="space-y-6">
-            
+
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
               {article.title}
             </h1>
-            
+
             <div className="flex flex-wrap gap-6 text-muted-foreground">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
@@ -79,11 +78,11 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
                 <span>{article.readTime}</span>
               </div>
             </div>
-            
+
             {article.authorRole && (
               <p className="text-purple-600 font-medium">{article.authorRole}</p>
             )}
-            
+
             <div className="flex flex-wrap gap-2">
               {article.tags.map((tag) => (
                 <Badge key={tag} variant="outline">
@@ -95,12 +94,27 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
         </div>
       </section>
 
-
+      {/* Featured Image */}
+      {article.featuredImage && (
+        <section className="w-full">
+          <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden">
+              <Image
+                src={article.featuredImage}
+                alt={article.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Abstract */}
       {article.abstract && (
         <section className="w-full py-8 bg-gray-50 dark:bg-gray-900">
-          <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+          <div className="container px-4 md:px-6 max-w-6xl mx-auto">
             <h2 className="text-xl font-semibold mb-4">Abstract</h2>
             <p className="text-muted-foreground leading-relaxed">
               {article.abstract}
@@ -111,21 +125,53 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
 
       {/* Article Content */}
       <section className="w-full py-12 md:py-16">
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+        <div className="container px-4 md:px-6 max-w-6xl mx-auto">
           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-700 dark:prose-p:text-gray-300">
-            <ReactMarkdown 
+            <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
-                h2: ({children}) => <h2 className="text-2xl font-semibold mt-6 mb-3">{children}</h2>,
-                h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2">{children}</h3>,
-                p: ({children}) => <p className="mb-4 leading-relaxed">{children}</p>,
-                ul: ({children}) => <ul className="list-disc pl-6 mb-4 space-y-1">{children}</ul>,
-                ol: ({children}) => <ol className="list-decimal pl-6 mb-4 space-y-1">{children}</ol>,
-                li: ({children}) => <li className="mb-1">{children}</li>,
-                strong: ({children}) => <strong className="font-semibold">{children}</strong>,
-                em: ({children}) => <em className="italic">{children}</em>,
+                h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
+                h2: ({ children }) => <h2 className="text-2xl font-semibold mt-6 mb-3">{children}</h2>,
+                h3: ({ children }) => <h3 className="text-xl font-medium mt-4 mb-2">{children}</h3>,
+                p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+                ul: ({ children }) => <ul className="list-disc pl-6 mb-4 space-y-1">{children}</ul>,
+                ol: ({ children }) => <ol className="list-decimal pl-6 mb-4 space-y-1">{children}</ol>,
+                li: ({ children }) => <li className="mb-1">{children}</li>,
+                strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                em: ({ children }) => <em className="italic">{children}</em>,
                 hr: () => <hr className="my-8 border-gray-300 dark:border-gray-600" />,
+                table: ({ children }) => (
+                  <div className="overflow-x-auto my-6">
+                    <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600">
+                      {children}
+                    </table>
+                  </div>
+                ),
+                thead: ({ children }) => (
+                  <thead className="bg-gray-50 dark:bg-gray-800">
+                    {children}
+                  </thead>
+                ),
+                tbody: ({ children }) => (
+                  <tbody className="bg-white dark:bg-gray-900">
+                    {children}
+                  </tbody>
+                ),
+                tr: ({ children }) => (
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    {children}
+                  </tr>
+                ),
+                th: ({ children }) => (
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left font-semibold bg-gray-100 dark:bg-gray-700">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }) => (
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                    {children}
+                  </td>
+                ),
               }}
             >
               {article.content?.trim() || ''}
@@ -136,7 +182,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
 
       {/* Author Info */}
       <section className="w-full py-8 bg-gray-50 dark:bg-gray-900">
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+        <div className="container px-4 md:px-6 max-w-6xl mx-auto">
           <div className="flex items-start gap-4 p-6 bg-white dark:bg-gray-800 rounded-lg">
             <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
               <User className="h-8 w-8 text-purple-600" />
@@ -147,7 +193,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
                 <p className="text-purple-600 mb-2">{article.authorRole}</p>
               )}
               <p className="text-muted-foreground">
-                Member of IEEE WIE-CEG Student Chapter, passionate about technology and research.
+                Passionate about technology and research, contributing valuable insights to the IEEE WIE-CEG community.
               </p>
             </div>
           </div>
@@ -157,7 +203,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
         <section className="w-full py-12 md:py-16">
-          <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+          <div className="container px-4 md:px-6 max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold mb-8">Related Articles</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {relatedArticles.map((relatedArticle) => (
@@ -191,7 +237,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
 
       {/* Call to Action */}
       <section className="w-full py-12 md:py-16 bg-purple-50 dark:bg-purple-900/20">
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto text-center">
+        <div className="container px-4 md:px-6 max-w-6xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4">Explore More Research</h2>
           <p className="text-muted-foreground mb-6">
             Discover more cutting-edge research and insights from our talented club members.
