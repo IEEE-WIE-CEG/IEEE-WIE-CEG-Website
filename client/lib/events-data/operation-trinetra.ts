@@ -13,7 +13,7 @@ const operationTrinetra: EventData = {
   tagline: "Detect, Defend, and Dismantle in India’s Digital Battlefield",
   context: `In the light of recent global and national events, our digital borders are as critical as our physical ones. National security now hinges on protecting sensitive, mission-critical data.\n\nOperation Trinetra is a 24-hour online hackathon designed to build robust, real-world systems to strengthen India's cybersecurity landscape - with a focus on defense, resilience, and innovation.`,
   poster: "/events-posters/operation-trinetra.png",
-  registrationLink: "https://example.com/register-operation-trinetra", // Mock registration link
+  registrationLink: undefined, // Registration disabled
 }
 
 export default operationTrinetra 
