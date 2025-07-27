@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { operationTrinetra, webDevelopmentWorkshop } from "@/lib/events-data"
+import { operationTrinetra } from "@/lib/events-data"
 import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +8,6 @@ import { Calendar, Clock, MapPin, Users } from "lucide-react"
 
 const eventMap: Record<string, any> = {
   "operation-trinetra": operationTrinetra,
-  "web-development-workshop": webDevelopmentWorkshop,
   // Add more events here as you create them
 }
 
@@ -36,7 +35,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
             className="rounded-lg w-full object-cover mb-6"
           />
         )}
-        
+
         <div className="mb-4">
           <Badge variant="secondary" className="mb-2">{event.category}</Badge>
           <h1 className="text-4xl font-bold mb-2">{event.title}</h1>
@@ -52,7 +51,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
               <p className="font-semibold">{event.date}</p>
             </div>
           </div>
-          
+
           {event.time && (
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5 text-purple-600" />
@@ -62,7 +61,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
               </div>
             </div>
           )}
-          
+
           {event.location && (
             <div className="flex items-center gap-2">
               <MapPin className="h-5 w-5 text-purple-600" />
@@ -72,7 +71,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
               </div>
             </div>
           )}
-          
+
           {event.attendees && (
             <div className="flex items-center gap-2">
               <Users className="h-5 w-5 text-purple-600" />
