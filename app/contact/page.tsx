@@ -205,6 +205,7 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">+91 6380383832</p>
+                    <p className="text-sm text-muted-foreground">Contact: Jeevitha</p>
                   </CardContent>
                 </Card>
 

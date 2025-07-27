@@ -1,22 +1,50 @@
+"use client"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Play, Image as ImageIcon, Video, X } from "lucide-react"
 import Image from "next/image"
+import { useState, useEffect } from "react"
 
 export default function GalleryPage() {
-  const galleryItems = [
-    { id: 1, title: "AI Workshop 2024", category: "Workshop", image: "/placeholder.svg?height=300&width=400" },
-    { id: 2, title: "Robotics Competition", category: "Competition", image: "/placeholder.svg?height=300&width=400" },
-    { id: 3, title: "Career Fair", category: "Networking", image: "/placeholder.svg?height=300&width=400" },
-    { id: 4, title: "Panel Discussion", category: "Panel", image: "/placeholder.svg?height=300&width=400" },
-    { id: 5, title: "Coding Bootcamp", category: "Workshop", image: "/placeholder.svg?height=300&width=400" },
-    { id: 6, title: "Tech Talk", category: "Seminar", image: "/placeholder.svg?height=300&width=400" },
-    { id: 7, title: "Networking Event", category: "Networking", image: "/placeholder.svg?height=300&width=400" },
-    { id: 8, title: "Innovation Showcase", category: "Exhibition", image: "/placeholder.svg?height=300&width=400" },
-    { id: 9, title: "Leadership Summit", category: "Conference", image: "/placeholder.svg?height=300&width=400" },
-    { id: 10, title: "STEM Outreach", category: "Outreach", image: "/placeholder.svg?height=300&width=400" },
-    { id: 11, title: "Mentorship Program", category: "Program", image: "/placeholder.svg?height=300&width=400" },
-    { id: 12, title: "Awards Ceremony", category: "Ceremony", image: "/placeholder.svg?height=300&width=400" },
+  const [selectedImage, setSelectedImage] = useState<typeof images[0] | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null)
+
+  const images = [
+    {
+      id: 1,
+      title: "Open Call 2025",
+      src: "/gallery/open_call_2025.jpg",
+      alt: "IEEE WIE-CEG Open Call 2025 Event"
+    }
   ]
+
+  const videos = [
+    {
+      id: 1,
+      title: "Open Call 2025 Highlights",
+      src: "/gallery/open_call_video.mp4",
+      thumbnail: "/gallery/open_call_2025.jpg"
+    }
+  ]
+
+  const closeModal = () => {
+    setSelectedImage(null)
+    setSelectedVideo(null)
+  }
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeModal()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   return (
     <main className="flex-1">
@@ -36,32 +64,160 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      {/* Images Section */}
+      <section className="w-full py-12 md:py-24">
         <div className="container px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {galleryItems.map((item) => (
-              <Card key={item.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-                <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="flex items-center gap-3 mb-8">
+            <ImageIcon className="h-8 w-8 text-purple-600" />
+            <h2 className="text-3xl font-bold tracking-tight">Images</h2>
+            <Badge variant="outline">{images.length}</Badge>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {images.map((image) => (
+              <Card 
+                key={image.id} 
+                className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => setSelectedImage(image)}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    width={400}
-                    height={300}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute top-2 right-2">
-                    <Badge variant="secondary">{item.category}</Badge>
-                  </div>
                 </div>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-lg">{item.title}</h3>
+                  <h3 className="font-semibold text-lg line-clamp-2">{image.title}</h3>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Videos Section */}
+      <section className="w-full py-12 md:py-24 bg-gray-50 dark:bg-gray-900">
+        <div className="container px-4 md:px-6">
+          <div className="flex items-center gap-3 mb-8">
+            <Video className="h-8 w-8 text-purple-600" />
+            <h2 className="text-3xl font-bold tracking-tight">Videos</h2>
+            <Badge variant="outline">{videos.length}</Badge>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videos.map((video) => (
+              <Card 
+                key={video.id} 
+                className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => setSelectedVideo(video)}
+              >
+                <div className="relative aspect-video bg-gray-100 dark:bg-gray-800">
+                  <Image
+                    src={video.thumbnail}
+                    alt={video.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                    <div className="bg-white/90 dark:bg-gray-800/90 rounded-full p-4 group-hover:scale-110 transition-transform duration-300">
+                      <Play className="h-8 w-8 text-purple-600" />
+                    </div>
+                  </div>
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-lg line-clamp-2">{video.title}</h3>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="w-full py-12 md:py-20">
+        <div className="container px-4 md:px-6 text-center">
+          <h2 className="text-2xl font-bold mb-4">Want to see more?</h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Follow us on Instagram for the latest updates, behind-the-scenes content, and more photos from our events.
+          </p>
+          <Button asChild>
+            <a href="https://www.instagram.com/ieeewieceg/" target="_blank" rel="noopener noreferrer">
+              Follow us on Instagram
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <div className="relative max-w-7xl max-h-full w-full h-full flex items-center justify-center">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+            <div 
+              className="relative max-w-full max-h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={1200}
+                height={800}
+                className="max-w-full max-h-[90vh] object-contain"
+                priority
+              />
+              <div className="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-lg">
+                <h3 className="font-semibold">{selectedImage.title}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <div className="relative max-w-6xl max-h-full w-full h-full flex items-center justify-center">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+            <div 
+              className="relative max-w-full max-h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                className="max-w-full max-h-[90vh] object-contain"
+                controls
+                autoPlay
+                muted
+                poster={selectedVideo.thumbnail}
+              >
+                <source src={selectedVideo.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-lg">
+                <h3 className="font-semibold">{selectedVideo.title}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }
