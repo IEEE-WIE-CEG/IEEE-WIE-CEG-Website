@@ -200,11 +200,11 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
         </div>
       </section>
 
-      {/* Related Articles */}
+      {/* More Articles */}
       {relatedArticles.length > 0 && (
         <section className="w-full py-12 md:py-16">
           <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">Related Articles</h2>
+            <h2 className="text-2xl font-bold mb-8">More Articles</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {relatedArticles.map((relatedArticle) => (
                 <div key={relatedArticle.id} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
