@@ -97,12 +97,14 @@ export default function OperationTrinetraPage() {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 font-semibold shadow-[0_0_20px_rgba(168,85,247,0.5)] hover:shadow-[0_0_30px_rgba(168,85,247,0.7)]">
-                Register Now
+              <Button size="lg" disabled className="bg-gray-600 text-gray-400 px-8 py-3 font-semibold cursor-not-allowed">
+                Registration Opens Soon
               </Button>
-              <Button variant="outline" size="lg" className="border-purple-500 text-purple-300 hover:bg-purple-900/30 hover:border-purple-400 px-8 py-3 font-semibold">
-                Contact Information
-              </Button>
+              <Link href="/contact">
+                <Button variant="outline" size="lg" className="border-purple-400 text-purple-800 hover:bg-purple-900/30 hover:border-purple-300 hover:text-purple-100 px-8 py-3 font-semibold">
+                  Contact Information
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -686,12 +688,14 @@ export default function OperationTrinetraPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 font-semibold shadow-[0_0_20px_rgba(168,85,247,0.5)] hover:shadow-[0_0_30px_rgba(168,85,247,0.7)]">
-                  Register Now
+                <Button size="lg" disabled className="bg-gray-600 text-gray-400 px-8 py-3 font-semibold cursor-not-allowed">
+                  Registration Opens Soon
                 </Button>
-                <Button variant="outline" size="lg" className="border-purple-500 text-purple-300 hover:bg-purple-900/30 hover:border-purple-400 px-8 py-3 font-semibold">
-                  Contact Information
-                </Button>
+                <Link href="/contact">
+                  <Button variant="outline" size="lg" className="border-purple-400 text-purple-800 hover:bg-purple-900/30 hover:border-purple-300 hover:text-purple-100 px-8 py-3 font-semibold">
+                    Contact Information
+                  </Button>
+                </Link>
               </div>
             </div>
 
