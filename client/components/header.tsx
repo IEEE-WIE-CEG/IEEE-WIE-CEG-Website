@@ -34,7 +34,7 @@ export function Header() {
             alt="IEEE WIE-CEG Student Chapter Logo"
             width={80}
             height={80}
-            className="w-16 h-16 md:w-16 md:h-16"
+            className="w-18 h-16 md:w-18 md:h-16"
           />
           <span className="hidden sm:inline text-sm md:text-xl">IEEE WIE-CEG Student Chapter</span>
         </Link>
