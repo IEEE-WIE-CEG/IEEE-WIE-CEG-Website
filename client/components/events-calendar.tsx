@@ -74,7 +74,7 @@ export function EventsCalendar() {
   return (
     <div className="w-full">
       {/* Calendar Header */}
-      <div className="flex items-center justify-between mb-6 bg-gray-900 text-white p-4 rounded-t-lg">
+      <div className="flex items-center justify-between mb-6 bg-purple-700 text-white p-4 rounded-t-lg">
         <Button
           variant="ghost"
           size="icon"
@@ -102,14 +102,14 @@ export function EventsCalendar() {
       {/* Days of Week Header */}
       <div className="grid grid-cols-7 gap-1 mb-2">
         {dayNames.map((day) => (
-          <div key={day} className="p-3 text-center font-semibold text-sm bg-gray-100 dark:bg-gray-800">
+          <div key={day} className="p-3 text-center font-semibold text-sm bg-gray-100">
             {day}
           </div>
         ))}
       </div>
 
       {/* Calendar Grid */}
-      <div className="grid grid-cols-7 gap-1 bg-gray-200 dark:bg-gray-800 p-1 rounded-b-lg">
+      <div className="grid grid-cols-7 gap-1 bg-gray-200 p-1 rounded-b-lg">
         {days.map((date, index) => {
           const dayEvents = getEventsForDate(date)
           const isToday = date && date.toDateString() === new Date().toDateString()
@@ -117,8 +117,8 @@ export function EventsCalendar() {
           return (
             <Card
               key={index}
-              className={`min-h-[120px] p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 ${
-                !date ? "bg-gray-50 dark:bg-gray-800" : ""
+              className={`min-h-[120px] p-2 border border-gray-300 bg-white ${
+                !date ? "bg-gray-50" : ""
               } ${isToday ? "ring-2 ring-purple-500" : ""}`}
             >
               {date && (
@@ -126,7 +126,7 @@ export function EventsCalendar() {
                   {/* Date Number */}
                   <div
                     className={`text-sm font-semibold mb-1 ${
-                      isToday ? "text-purple-600" : "text-gray-900 dark:text-gray-100"
+                      isToday ? "text-purple-600" : "text-gray-900"
                     }`}
                   >
                     {date.getDate()}
@@ -137,15 +137,15 @@ export function EventsCalendar() {
                     {dayEvents.slice(0, 3).map((event) => (
                       <div
                         key={event.id}
-                        className="text-xs p-1 bg-gray-100 dark:bg-gray-800 rounded text-gray-900 dark:text-gray-100 truncate"
+                        className="text-xs p-1 bg-gray-100 rounded text-gray-900 truncate"
                         title={`${event.title} - ${event.time}`}
                       >
                         <div className="font-medium truncate">{event.title}</div>
-                        <div className="text-gray-500 dark:text-gray-400 text-[10px]">{event.time}</div>
+                        <div className="text-gray-500 text-[10px]">{event.time}</div>
                       </div>
                     ))}
                     {dayEvents.length > 3 && (
-                      <div className="text-xs text-gray-500 dark:text-gray-400">+{dayEvents.length - 3} more</div>
+                      <div className="text-xs text-gray-500">+{dayEvents.length - 3} more</div>
                     )}
                   </div>
                 </>
