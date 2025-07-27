@@ -100,7 +100,7 @@ export default function ResearchPage() {
 
       {/* Featured Article */}
       {sortedArticles.length > 0 && (
-        <section className="w-full py-12 md:py-24 bg-gray-50 dark:bg-gray-900">
+        <section className="w-full py-12 md:py-24 bg-gray-50">
           <div className="container px-4 md:px-6">
             <div className="mb-8">
               <Badge className="mb-4">Featured Article</Badge>

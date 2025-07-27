@@ -102,7 +102,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Videos Section */}
-      <section className="w-full py-12 md:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="w-full py-12 md:py-24 bg-gray-50">
         <div className="container px-4 md:px-6">
           <div className="flex items-center gap-3 mb-8">
             <Video className="h-8 w-8 text-purple-600" />

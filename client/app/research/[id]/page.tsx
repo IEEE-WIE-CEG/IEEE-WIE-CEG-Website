@@ -113,7 +113,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
 
       {/* Abstract */}
       {article.abstract && (
-        <section className="w-full py-8 bg-gray-50 dark:bg-gray-900">
+        <section className="w-full py-8 bg-gray-50">
           <div className="container px-4 md:px-6 max-w-6xl mx-auto">
             <h2 className="text-xl font-semibold mb-4">Abstract</h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -181,7 +181,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
       </section>
 
       {/* Author Info */}
-      <section className="w-full py-8 bg-gray-50 dark:bg-gray-900">
+      <section className="w-full py-8 bg-gray-50">
         <div className="container px-4 md:px-6 max-w-6xl mx-auto">
           <div className="flex items-start gap-4 p-6 bg-white dark:bg-gray-800 rounded-lg">
             <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">

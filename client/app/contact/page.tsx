@@ -65,7 +65,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section
         className="w-full bg-cover bg-center relative min-h-[500px] flex items-center justify-center"
-        style={{ backgroundImage: "url('/banners/contact_bg.png')" }} 
+        style={{ backgroundImage: "url('/banners/contact_bg.png')" }}
       >
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
@@ -254,7 +254,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
