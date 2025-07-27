@@ -7,7 +7,11 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://ieee-wie-ceg.vercel.app', // replace with your Vercel domain
+  methods: ['GET', 'POST'],
+  credentials: true
+}))
 
 app.use('/api/contact', contactRoute);
 app.get('/', (req, res) => {
