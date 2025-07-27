@@ -63,7 +63,10 @@ export default function ContactPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-purple-600 to-blue-600">
+      <section
+        className="w-full bg-cover bg-center relative min-h-[500px] flex items-center justify-center"
+        style={{ backgroundImage: "url('/banners/contact_bg.png')" }} 
+      >
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">

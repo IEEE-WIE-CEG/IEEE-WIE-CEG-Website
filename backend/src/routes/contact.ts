@@ -22,22 +22,24 @@ router.post('/', async (req: Request, res: Response) => {
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.TO_EMAIL,
+      from: `"WIE Contact Form" <${process.env.EMAIL_USER}>`,  
+      to: process.env.EMAIL_USER,
+      replyTo: email,  
+
       subject: `IEEE-WIE Contact: ${subject} - From ${fullName}`,
-      replyTo: email,
+
       text: `
-New message from IEEE-WIE Contact Form:
+      New message from IEEE-WIE Contact Form:
 
-Name: ${fullName}
-Email: ${email}
-Department: ${department || 'N/A'}
-University: ${university || 'N/A'}
+      Name: ${fullName}
+      Email: ${email}
+      Department: ${department || 'N/A'}
+      University: ${university || 'N/A'}
 
-Message:
-${message}
-      `,
-    };
+      Message:
+      ${message}
+        `,
+      };
 
     const info = await transporter.sendMail(mailOptions);
     res.status(200).json({ success: true, message: 'Email sent successfully', id: info.messageId });
