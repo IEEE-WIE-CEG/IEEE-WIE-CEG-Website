@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import * as React from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import Link from "next/link"
 
 export default function AboutPage() {
   const teamMembers = [
@@ -359,13 +360,17 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="space-x-4">
-              <Button className="bg-white text-purple-600 hover:bg-gray-100">Join IEEE WIE-CEG Student Chapter</Button>
-              <Button
-                variant="outline"
-                className="text-white border-white hover:bg-white hover:text-purple-600 bg-transparent"
-              >
-                Contact Us
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-white text-purple-600 hover:bg-gray-100">Join IEEE WIE-CEG Student Chapter</Button>
+              </Link>
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="text-white border-white hover:bg-white hover:text-purple-600 bg-transparent"
+                >
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
