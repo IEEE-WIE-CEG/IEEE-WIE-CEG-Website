@@ -89,7 +89,7 @@ export default function AboutPage() {
       members: [
         { name: "Shibani Selvakumar", image: "/members/shibani.jpg" },
         { name: "Akhshaiya S", image: "/members/akshaiya.jpg" },
-        { name: "Shannen Catherine A", image: "/placeholder.svg?height=100&width=100" },
+        { name: "Shannen Catherine A", image: "/members/shannen-catherine.jpg" },
       ],
     },
     {
