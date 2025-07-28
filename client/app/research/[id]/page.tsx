@@ -139,36 +139,36 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
                 li: ({ children }) => <li className="mb-1">{children}</li>,
                 strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
                 em: ({ children }) => <em className="italic">{children}</em>,
-                hr: () => <hr className="my-8 border-gray-300 dark:border-gray-600" />,
+                hr: () => <hr className="my-8 border-gray-300" />,
                 table: ({ children }) => (
                   <div className="overflow-x-auto my-6">
-                    <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600">
+                    <table className="min-w-full border-collapse border border-gray-300">
                       {children}
                     </table>
                   </div>
                 ),
                 thead: ({ children }) => (
-                  <thead className="bg-gray-50 dark:bg-gray-800">
+                  <thead className="bg-gray-50">
                     {children}
                   </thead>
                 ),
                 tbody: ({ children }) => (
-                  <tbody className="bg-white dark:bg-gray-900">
+                  <tbody className="bg-white">
                     {children}
                   </tbody>
                 ),
                 tr: ({ children }) => (
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <tr className="border-b border-gray-200">
                     {children}
                   </tr>
                 ),
                 th: ({ children }) => (
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left font-semibold bg-gray-100 dark:bg-gray-700">
+                  <th className="border border-gray-300 px-4 py-2 text-left font-semibold bg-gray-100">
                     {children}
                   </th>
                 ),
                 td: ({ children }) => (
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                  <td className="border border-gray-300 px-4 py-2">
                     {children}
                   </td>
                 ),
@@ -183,7 +183,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
       {/* Author Info */}
       <section className="w-full py-8 bg-gray-50">
         <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-          <div className="flex items-start gap-4 p-6 bg-white dark:bg-gray-800 rounded-lg">
+          <div className="flex items-start gap-4 p-6 bg-white rounded-lg">
             <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
               <User className="h-8 w-8 text-purple-600" />
             </div>
