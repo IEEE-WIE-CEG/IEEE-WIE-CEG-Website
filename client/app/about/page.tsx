@@ -111,6 +111,13 @@ export default function AboutPage() {
       members: [
         { name: "Roshon R", image: "/members/Roshan-support-events-member.jpg" },
         { name: "Aarya Malviya", image: "/members/Aarya Malviya.jpg" },
+        { name: "Trisha D", image: "/members/Trisha.jpg" },
+        { name: "Nivetha N", image: "/members/Nivetha.jpg" },
+        { name: "Abirami", image: "/members/Abirami.jpg" },
+        { name: "Abhinandan", image: "/members/abinanthan.jpg" },
+        { name: "Shreyaa N K", image: "/members/sherya.jpg" },
+        { name: "Tanusri.K", image: "/members/Tanusri.jpg" },
+        { name: "Vishaka Ganesan", image: "/members/vishka.jpg" },
       ],
     },
     {
