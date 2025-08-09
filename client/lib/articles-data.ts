@@ -1,4 +1,6 @@
 // Centralized research articles data
+import aiDesignerArticle from "./articles-data/ai-designer"
+
 export interface ArticleData {
   id: string
   title: string
@@ -265,6 +267,7 @@ This research contributes to our understanding of LLM limitations and provides p
 }
 
 export const articles: ArticleData[] = [
+  aiDesignerArticle,
   llmsBiasArticle,
   arvrArticle,
   // Your other research articles will be added here

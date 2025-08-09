@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import { articles, arvrArticle, llmsBiasArticle } from "@/lib/articles-data"
+import aiDesignerArticle from "@/lib/articles-data/ai-designer"
 import Link from "next/link"
 import Image from "next/image"
 import ReactMarkdown from "react-markdown"
@@ -12,6 +13,7 @@ import remarkGfm from "remark-gfm"
 const articleMap = {
   "beyond-screens-into-reality": arvrArticle,
   "bias-toward-simplicity-llms": llmsBiasArticle,
+  "ai-co-designers-creative-process": aiDesignerArticle,
 }
 
 export async function generateStaticParams() {
@@ -20,8 +22,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function ArticlePage({ params }: { params: { id: string } }) {
-  const article = articleMap[params.id as keyof typeof articleMap]
+export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const article = articleMap[id as keyof typeof articleMap]
 
   if (!article) {
     notFound()
