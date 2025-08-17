@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CountdownTimer } from "@/components/countdown-timer"
 import {
   Calendar,
   Clock,
@@ -71,7 +72,7 @@ export default function OperationTrinetraPage() {
                   <Calendar className="h-5 w-5 text-purple-400 group-hover:text-purple-300 transition-colors" />
                   <div>
                     <div className="text-sm text-purple-400">Date</div>
-                    <div className="text-purple-100 font-medium">Third week of August</div>
+                    <div className="text-purple-100 font-medium">September 13, 2025</div>
                   </div>
                 </div>
               </div>
@@ -92,6 +93,19 @@ export default function OperationTrinetraPage() {
                     <div className="text-purple-100 font-medium">24 Hours</div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Countdown Timer */}
+            <div className="mb-12">
+              <div className="relative bg-gradient-to-br from-purple-950/40 via-slate-950/60 to-blue-950/40 border border-purple-500/30 rounded-2xl p-6 md:p-8 lg:p-10 backdrop-blur-sm">
+                <CountdownTimer
+                  targetDate="2025-09-13T08:00:00+05:30"
+                  className="relative z-10"
+                />
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-transparent to-blue-600/5 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(147,51,234,0.05),transparent_70%)] rounded-2xl"></div>
               </div>
             </div>
 
@@ -264,7 +278,7 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-emerald-600/20 border border-emerald-600/30 rounded-full flex items-center justify-center">
                     <span className="text-emerald-400 font-bold text-lg">1</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-pink-200">Day 1 - August [Date]</h3>
+                  <h3 className="text-2xl font-bold text-pink-200">Day 1 - September 13, 2025</h3>
                 </div>
                 
                 <div className="ml-6 border-l-2 border-purple-700/30 pl-8 space-y-6">
@@ -341,7 +355,7 @@ export default function OperationTrinetraPage() {
                   <div className="w-12 h-12 bg-red-600/20 border border-red-600/30 rounded-full flex items-center justify-center">
                     <span className="text-red-400 font-bold text-lg">2</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-pink-200">Day 2 - August [Date + 1]</h3>
+                  <h3 className="text-2xl font-bold text-pink-200">Day 2 - September 14, 2025</h3>
                 </div>
                 
                 <div className="ml-6 border-l-2 border-purple-700/30 pl-8 space-y-6">

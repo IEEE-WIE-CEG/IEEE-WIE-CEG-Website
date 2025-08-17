@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { events as allEvents } from "@/lib/events-data"
 import { articles as allArticles } from "@/lib/articles-data"
+import { AnnouncementBanner } from "@/components/announcement-banner"
 
 export default function Home() {
   // Find the latest upcoming event
@@ -30,10 +31,11 @@ export default function Home() {
 
   return (
     <main className="flex-1">
+      <AnnouncementBanner />
       {/* Hero Section */}
       <section
         className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-cover bg-center"
-        style={{ backgroundImage: "url('/banners/anna_university.webp')" }} 
+        style={{ backgroundImage: "url('/banners/anna_university.webp')" }}
       >
         <div className="container px-4 md:px-6 bg-black/50 rounded-xl py-20 min-h-[200px] flex items-center justify-center">
 

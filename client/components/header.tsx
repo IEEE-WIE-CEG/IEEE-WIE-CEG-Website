@@ -19,6 +19,7 @@ export function Header() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/events", label: "Events" },
+    { href: "/events/operation-trinetra", label: "Operation Trinetra", special: true },
     { href: "/research", label: "Research" },
     { href: "/gallery", label: "Gallery" },
     { href: "/contact", label: "Contact Us" },
@@ -44,9 +45,13 @@ export function Header() {
           <ul className="flex gap-6 xl:gap-8 items-center">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link 
-                  href={item.href} 
-                  className="transition-colors text-purple-100 hover:text-white font-medium px-3 py-2 rounded-md hover:bg-white/10"
+                <Link
+                  href={item.href}
+                  className={`transition-colors font-medium px-3 py-2 rounded-md ${
+                    item.special
+                      ? "text-yellow-300 hover:text-yellow-200 bg-purple-600/30 hover:bg-purple-600/50 border border-yellow-400/30 hover:border-yellow-300/50 shadow-sm hover:shadow-md"
+                      : "text-purple-100 hover:text-white hover:bg-white/10"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -72,10 +77,14 @@ export function Header() {
             <ul className="space-y-2">
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <Link 
+                  <Link
                     href={item.href}
                     onClick={closeMenu}
-                    className="block transition-colors text-purple-100 hover:text-white font-medium px-3 py-3 rounded-md hover:bg-white/10"
+                    className={`block transition-colors font-medium px-3 py-3 rounded-md ${
+                      item.special
+                        ? "text-yellow-300 hover:text-yellow-200 bg-purple-600/30 hover:bg-purple-600/50 border border-yellow-400/30 hover:border-yellow-300/50"
+                        : "text-purple-100 hover:text-white hover:bg-white/10"
+                    }`}
                   >
                     {item.label}
                   </Link>

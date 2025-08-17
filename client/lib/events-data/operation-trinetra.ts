@@ -3,7 +3,7 @@ import { EventData } from "../events-data"
 const operationTrinetra: EventData = {
   id: "operation-trinetra",
   title: "Operation Trinetra",
-  date: "2025-08-09", // or "2024-08-16" if finalized
+  date: "2025-09-13",
   time: "24-hour online hackathon",
   location: "Online",
   attendees: undefined, // To be updated if needed
