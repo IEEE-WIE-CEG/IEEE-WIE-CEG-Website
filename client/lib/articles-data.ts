@@ -1,5 +1,7 @@
 // Centralized research articles data
 import aiDesignerArticle from "./articles-data/ai-designer"
+import majoranaChipArticle from "./articles-data/majorana-chip"
+import aiHardwareArticle from "./articles-data/ai-hardware"
 
 export interface ArticleData {
   id: string
@@ -267,8 +269,10 @@ This research contributes to our understanding of LLM limitations and provides p
 }
 
 export const articles: ArticleData[] = [
-  aiDesignerArticle,
-  llmsBiasArticle,
-  arvrArticle,
-  // Your other research articles will be added here
+   aiDesignerArticle,
+   llmsBiasArticle,
+   arvrArticle,
+   majoranaChipArticle,
+   aiHardwareArticle,
+   // Your other research articles will be added here
 ]

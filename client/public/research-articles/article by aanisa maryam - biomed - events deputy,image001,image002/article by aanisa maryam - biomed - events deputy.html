@@ -1,0 +1,434 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>article for ieee</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Arial MT";}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman",serif;}
+h1
+	{margin:0in;
+	text-autospace:none;
+	font-size:15.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	text-autospace:none;
+	font-size:26.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0in;
+	text-autospace:none;
+	font-size:13.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:35.95pt;
+	text-indent:-17.95pt;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman",serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{text-autospace:none;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:69.0pt 1.0in 14.0pt 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+@page WordSection2
+	{size:8.5in 11.0in;
+	margin:69.0pt 1.0in 14.0pt 1.0in;}
+div.WordSection2
+	{page:WordSection2;}
+@page WordSection3
+	{size:8.5in 11.0in;
+	margin:69.0pt 1.0in 14.0pt 1.0in;}
+div.WordSection3
+	{page:WordSection3;}
+@page WordSection4
+	{size:8.5in 11.0in;
+	margin:69.0pt 1.0in 14.0pt 1.0in;}
+div.WordSection4
+	{page:WordSection4;}
+@page WordSection5
+	{size:8.5in 11.0in;
+	margin:68.0pt 1.0in 14.0pt 1.0in;}
+div.WordSection5
+	{page:WordSection5;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoTitle style='line-height:115%'><a
+name="UNDERSTANDING_THE_HARDWARE_BEHIND_AI_MOD"></a><span style='letter-spacing:
+-.2pt'>UNDERSTANDING</span><span style='letter-spacing:-1.1pt'> </span><span
+style='letter-spacing:-.2pt'>THE</span><span style='letter-spacing:-1.1pt'> </span><span
+style='letter-spacing:-.2pt'>HARDWARE </span>BEHIND AI MODELS</p>
+
+<h1 style='margin-top:17.55pt'>ABSTRACT <span style='letter-spacing:-.5pt'>:</span></h1>
+
+<p class=MsoBodyText style='margin-top:1.3pt'><b><span style='font-size:15.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoBodyText style='margin-right:.1pt;text-align:justify;line-height:
+150%'>In the era of using powerful AI, ML models to solve real world problems,
+equivalently<span style='letter-spacing:2.0pt'> </span>we need<span
+style='letter-spacing:-.2pt'> </span>powerful<span style='letter-spacing:-.2pt'>
+</span>chips<span style='letter-spacing:-.2pt'> </span>to<span
+style='letter-spacing:-.2pt'> </span>do<span style='letter-spacing:-.2pt'> </span>billions<span
+style='letter-spacing:-.2pt'> </span>of<span style='letter-spacing:-.2pt'> </span>computations<span
+style='letter-spacing:-.2pt'> </span>every<span style='letter-spacing:-.2pt'> </span>second.<span
+style='letter-spacing:-.2pt'> </span>This<span style='letter-spacing:-.2pt'> </span>article<span
+style='letter-spacing:-.2pt'> </span>explores highly promising technology to
+run computationally complex, time consuming,AI,ML models and the challenges to
+address.</p>
+
+<p class=MsoBodyText style='margin-top:5.75pt'>&nbsp;</p>
+
+<h1>PARALLEL<span style='letter-spacing:-.6pt'> </span>COMPUTING<span
+style='letter-spacing:-.55pt'> </span><span style='letter-spacing:-.5pt'>:</span></h1>
+
+<p class=MsoBodyText style='margin-top:1.35pt'><b><span style='font-size:15.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoBodyText style='text-align:justify;line-height:150%'>Parallel
+computing is a process where large<span style='letter-spacing:-.15pt'> </span>computation<span
+style='letter-spacing:-.15pt'> </span>problems<span style='letter-spacing:2.0pt'>
+</span>are<span style='letter-spacing:-.15pt'> </span>broken<span
+style='letter-spacing:-.15pt'> </span>down<span style='letter-spacing:-.15pt'> </span>into
+smaller problems that can be solved simultaneously by multiple processors.
+During the late 1940s and 1950s, software was programmed to solve problems in
+sequence, which restricted processing speed. Parallel computing, employing
+multi-core processors and graphics processing units (GPUs), can be utilized to
+solve the<span style='letter-spacing:-.15pt'> </span>computations<span
+style='letter-spacing:-.15pt'> </span>at<span style='letter-spacing:-.15pt'> </span>hand<span
+style='letter-spacing:-.15pt'> </span>with<span style='letter-spacing:2.0pt'> </span>a
+greater ease.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText style='margin-top:1.85pt'>&nbsp;</p>
+
+<h1>NEED<span style='letter-spacing:-.3pt'> </span>FOR<span style='letter-spacing:
+-.3pt'> </span>PARALLEL<span style='letter-spacing:-.3pt'> </span>COMPUTING<span
+style='letter-spacing:-.25pt'> </span><span style='letter-spacing:-.5pt'>:</span></h1>
+
+<p class=MsoBodyText style='margin-top:1.35pt'><b><span style='font-size:15.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoBodyText style='margin-right:.05pt;text-align:justify;line-height:
+150%'>Parallel computing plays a critical role in the training of ML models<span
+style='letter-spacing:-.15pt'> </span>for<span style='letter-spacing:-.15pt'> </span>AI<span
+style='letter-spacing:-.15pt'> </span>applications, such as facial recognition
+and <a href="https://www.ibm.com/think/topics/natural-language-processing"><span
+style='color:windowtext;text-decoration:none'>natural language processing (NLP)</span></a>.
+By performing operations simultaneously, parallel computing significantly
+reduces the time that it takes to train ML models accurately on data. Here the
+workload is shared by CPU and GPU,<span style='letter-spacing:2.0pt'> </span>the
+former does the preprocessing tasks and the later computed matrix
+multiplication, backpropagation etc., thereby completing the task at hand
+efficiently<span style='font-family:"Arial MT",sans-serif;color:#161616'>.</span></p>
+
+</div>
+
+<span style='font-size:13.0pt;line-height:150%;font-family:"Arial MT",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<div class=WordSection2>
+
+<p class=MsoBodyText style='margin-top:3.0pt;margin-right:.1pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:150%'>To
+highlight<span style='letter-spacing:-.25pt'> </span>the<span style='letter-spacing:
+-.25pt'> </span>computational<span style='letter-spacing:-.25pt'> </span>complexities<span
+style='letter-spacing:-.25pt'> </span>of<span style='letter-spacing:-.25pt'> </span>CNN,<span
+style='letter-spacing:-.25pt'> </span>the<span style='letter-spacing:-.25pt'> </span>study<span
+style='letter-spacing:-.25pt'> </span>“<span style='letter-spacing:-.25pt'> </span>time<span
+style='letter-spacing:-.25pt'> </span>complexity<span style='letter-spacing:
+-.25pt'> </span>in<span style='letter-spacing:-.25pt'> </span>deep learning
+models” highlights this.They experimented with various CNN models to understand
+the time complexity of the model.The dataset considered for the<span
+style='letter-spacing:-.15pt'> </span>experiments is FOOD20. FOOD20 is the
+Indian food dataset provided by Kaggle that contains 20<span style='letter-spacing:
+2.0pt'> </span>food classes containing a total of 2000 images. 80% of the
+images from<span style='letter-spacing:-.1pt'> </span>the<span
+style='letter-spacing:-.1pt'> </span>dataset<span style='letter-spacing:-.1pt'>
+</span>have been used for training and 20% of the images have been used for
+testing.The chosen parameters for the work are the number of convolution
+layers, number of dense layers, pool size, size of filters, size of neurons,
+number of filters, and size of the convolution <span style='letter-spacing:
+-.1pt'>kernel</span><span style='font-size:11.0pt;line-height:150%;letter-spacing:
+-.1pt'>.</span></p>
+
+<p class=MsoBodyText style='margin-top:4.3pt'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=106 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=554 height=199
+  src="article%20by%20aanisa%20maryam%20-%20biomed%20-%20events%20deputy_files/image001.jpg"></td>
+ </tr>
+</table>
+
+<br clear=ALL>
+</p>
+
+<p class=MsoNormal style='margin-top:5.0pt;text-align:justify'>Fig<span
+style='letter-spacing:-.25pt'> </span>1<span style='letter-spacing:-.2pt'> </span>:<span
+style='letter-spacing:-.25pt'> </span>Specifications<span style='letter-spacing:
+-.2pt'> </span>of<span style='letter-spacing:-.25pt'> </span>various<span
+style='letter-spacing:-.2pt'> </span>CNN<span style='letter-spacing:-.2pt'> </span><span
+style='letter-spacing:-.1pt'>models.</span></p>
+
+<p class=MsoBodyText style='margin-top:.3pt'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=108 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=494 height=227
+  src="article%20by%20aanisa%20maryam%20-%20biomed%20-%20events%20deputy_files/image002.jpg"></td>
+ </tr>
+</table>
+
+<br clear=ALL>
+</p>
+
+<p class=MsoBodyText style='margin-top:.55pt'><span style='font-size:11.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'>Fig<span style='letter-spacing:
+-.25pt'> </span>2<span style='letter-spacing:-.25pt'> </span>:<span
+style='letter-spacing:-.2pt'> </span>Results<span style='letter-spacing:-.25pt'>
+</span>of<span style='letter-spacing:-.2pt'> </span>the<span style='letter-spacing:
+-.25pt'> </span>time<span style='letter-spacing:-.25pt'> </span>complexity<span
+style='letter-spacing:-.2pt'> </span>of<span style='letter-spacing:-.25pt'> </span>different<span
+style='letter-spacing:-.2pt'> </span><span style='letter-spacing:-.1pt'>models.</span></p>
+
+</div>
+
+<span style='font-size:11.0pt;font-family:"Times New Roman",serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<div class=WordSection3>
+
+<p class=MsoBodyText style='margin-top:3.0pt;margin-right:.2pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:150%'><span
+style='color:#001C34'>In many Deep Neural Network (DNN) models,
+multiply-accumulate (MAC) operations are the main computations that need to be
+done. Consequently, hardware architectures capable of efficiently executing
+parallel MAC operations are essential for running DNN models at scale.Given
+this, there is a pressing need<span style='letter-spacing:-.15pt'> </span>to<span
+style='letter-spacing:-.15pt'> </span>have<span style='letter-spacing:-.15pt'> </span>efficient<span
+style='letter-spacing:-.15pt'> </span>technologies<span style='letter-spacing:
+-.15pt'> </span>at<span style='letter-spacing:-.15pt'> </span>hand to do this
+task.</span></p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText style='margin-top:12.5pt'>&nbsp;</p>
+
+<h1 style='line-height:115%'>OVERVIEW<span style='letter-spacing:-.35pt'> </span>OF<span
+style='letter-spacing:-.35pt'> </span>GPU<span style='letter-spacing:-.35pt'> </span>ARCHITECTURE<span
+style='letter-spacing:-.35pt'> </span>AND<span style='letter-spacing:-.35pt'> </span>ITS<span
+style='letter-spacing:-.35pt'> </span>ROLE<span style='letter-spacing:-.35pt'> </span>IN
+TRAINING AI MODELS:</h1>
+
+<p class=MsoBodyText style='margin-top:16.0pt;margin-right:.05pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:150%'><span
+style='color:#161616'>At a fundamental level, modern Graphics Processing Units
+(GPUs) are designed to implement massive parallel computation. Every GPU are
+numerous parallel processing clusters, named<span style='letter-spacing:4.0pt'>
+</span>as Streaming Multiprocessors (SMs) in NVIDIA designs, Compute<span
+style='letter-spacing:2.0pt'> </span>Units (CUs) in AMD products, and Xe Cores
+in Intel ,each comprising multiple arithmetic logic units, dedicated registers
+for<span style='letter-spacing:-.2pt'> </span>rapid<span style='letter-spacing:
+-.2pt'> </span>data<span style='letter-spacing:-.2pt'> </span>access,<span
+style='letter-spacing:-.2pt'> </span>and<span style='letter-spacing:-.2pt'> </span>shared<span
+style='letter-spacing:-.2pt'> </span>local<span style='letter-spacing:-.2pt'> </span>memory.
+These clusters interface with the memory hierarchy, which typically includes L1
+and L2 caches situated between the processing<span style='letter-spacing:-.2pt'>
+</span>elements<span style='letter-spacing:-.2pt'> </span>and<span
+style='letter-spacing:-.2pt'> </span>the<span style='letter-spacing:-.2pt'> </span>global<span
+style='letter-spacing:-.2pt'> </span>memory<span style='letter-spacing:-.2pt'> </span>(VRAM),<span
+style='letter-spacing:-.2pt'> </span>which is based on high-speed High
+Bandwidth Memory (HBM) technologies.Specialized functional units such as tensor
+processing cores, ray tracing accelerators, and texture mapping units address
+the domain-specific computational demands. While this foundational architecture
+remains consistent across the industry,<span style='letter-spacing:-.3pt'> </span>each<span
+style='letter-spacing:-.3pt'> </span>vendor<span style='letter-spacing:-.3pt'> </span>implements
+distinct optimizations to address its strategic priorities.</span></p>
+
+<p class=MsoBodyText style='margin-top:12.0pt;margin-right:.05pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:150%'>An
+AI model can be viewed as a mathematical model to do the intended<span
+style='letter-spacing:-.15pt'> </span>task,<span style='letter-spacing:-.15pt'>
+</span>built<span style='letter-spacing:-.15pt'> </span>from successive layers
+of linear algebra operations. GPUs contain thousands of processing cores
+capable of executing these operations simultaneously. GPUs are perfect fit to
+run these models as they are equipped with a massive amount of parallelism and
+specialized cores to match the demands of the required computations.</p>
+
+</div>
+
+<span style='font-size:13.0pt;line-height:150%;font-family:"Times New Roman",serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<div class=WordSection4>
+
+<p class=MsoBodyText style='margin-top:3.0pt;margin-right:.1pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:150%'>As
+generations pass, GPUs have incorporated larger memory capacities and refined
+memory management techniques, enabling entire AI models to be stored within a
+single GPU or across a coordinated set of GPUs, further improving performance
+and scalability.</p>
+
+<p class=MsoBodyText style='margin-top:6.05pt'>&nbsp;</p>
+
+<h1><span style='letter-spacing:-.1pt'>CHALLENGES</span><span style='font-family:
+"Arial",sans-serif;letter-spacing:-.1pt'>:</span></h1>
+
+<p class=MsoBodyText style='margin-top:12.4pt'><b><span style='font-size:15.0pt;
+font-family:"Arial",sans-serif'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-right:.05pt;text-align:justify;line-height:
+150%'><span style='font-size:12.0pt;line-height:150%'>Despite rapid
+advancements, several challenges persist as AI models continue to grow in scale
+and<span style='letter-spacing:-.25pt'> </span>complexity.<span
+style='letter-spacing:-.25pt'> </span>Scalability<span style='letter-spacing:
+-.25pt'> </span>remains<span style='letter-spacing:-.25pt'> </span>a<span
+style='letter-spacing:-.25pt'> </span>concern,<span style='letter-spacing:-.25pt'>
+</span>as<span style='letter-spacing:-.25pt'> </span>training<span
+style='letter-spacing:-.25pt'> </span>large<span style='letter-spacing:-.25pt'>
+</span>models<span style='letter-spacing:-.25pt'> </span>often<span
+style='letter-spacing:-.25pt'> </span>requires<span style='letter-spacing:-.25pt'>
+</span>multi-GPU systems. Memory bandwidth and capacity limitations also pose
+significant hurdles, with many large-scale models exceeding the on-board memory
+of GPUs and resulting in slower data transfers from system memory or storage.
+Furthermore, energy efficiency and thermal management are also important issues
+to consider, as high-performance GPUs consume substantial power. Finally, the
+high cost of state-of-the-art GPUs creates accessibility barriers, particularly
+for smaller research teams and independent developers.</span></p>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyText style='margin-top:2.45pt'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<h1><span style='letter-spacing:-.1pt'>CONCLUSION:</span></h1>
+
+<p class=MsoBodyText style='margin-top:7.35pt'><b><span style='font-size:15.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-top:.05pt;text-align:justify;line-height:150%'><span
+style='font-size:12.0pt;line-height:150%'>GPUs have established themselves as
+the<span style='letter-spacing:-.15pt'> </span>backbone<span style='letter-spacing:
+-.15pt'> </span>of<span style='letter-spacing:-.15pt'> </span>modern<span
+style='letter-spacing:-.15pt'> </span>AI<span style='letter-spacing:-.15pt'> </span>and<span
+style='letter-spacing:-.15pt'> </span>ML<span style='letter-spacing:-.15pt'> </span>workloads,<span
+style='letter-spacing:-.15pt'> </span>delivering massive parallel processing
+capabilities and integrating specialized compute units to meet the demands of
+increasingly complex models.<span style='letter-spacing:-.2pt'> </span>Their<span
+style='letter-spacing:-.2pt'> </span>architectural<span style='letter-spacing:
+-.2pt'> </span>evolution,driven<span style='letter-spacing:-.2pt'> </span>by<span
+style='letter-spacing:-.2pt'> </span>larger<span style='letter-spacing:-.2pt'> </span>memory
+capacities, faster interconnects, and innovative processing clusters, has
+significantly expanded<span style='letter-spacing:2.0pt'> </span>the
+possibilities for deep learning applications. Continued innovation in both
+hardware design and AI algorithms will<span style='letter-spacing:2.0pt'> </span>determine
+how effectively the next generation of models can be trained and deployed.</span></p>
+
+<h1 style='margin-top:12.0pt'><span style='letter-spacing:-.1pt'>REFERENCES:</span></h1>
+
+<p class=MsoBodyText style='margin-top:1.3pt'><b><span style='font-size:15.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoListParagraph><span style='font-size:13.0pt;font-family:"Arial MT",sans-serif'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:13.0pt'>Time<span style='letter-spacing:
+-.3pt'> </span>Complexity<span style='letter-spacing:-.3pt'> </span>in<span
+style='letter-spacing:-.25pt'> </span>Deep<span style='letter-spacing:-.3pt'> </span>Learning<span
+style='letter-spacing:-.3pt'> </span>Mod</span><span style='font-size:13.0pt;
+font-family:"Arial MT",sans-serif'>els<span style='letter-spacing:-.3pt'> </span>by<span
+style='letter-spacing:-.3pt'> </span></span><span style='font-size:13.0pt;
+color:#1F1F1F'>Bhoomi<span style='letter-spacing:-.3pt'> </span>Shah<span
+style='letter-spacing:-.25pt'> </span>and<span style='letter-spacing:-.3pt'> </span>Hetal<span
+style='letter-spacing:-.25pt'> </span><span style='letter-spacing:-.1pt'>Bhavsar.</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:2.25pt'><span style='font-size:
+13.0pt;font-family:"Arial MT",sans-serif;color:#1F1F1F'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:13.0pt;color:#1F1F1F;letter-spacing:-.1pt'>https://blogs.nvidia.com/blog/why-gpus-are-great-for-</span><span
+style='font-size:13.0pt;color:#1F1F1F;letter-spacing:-.25pt'>ai/</span></p>
+
+<p class=MsoListParagraph style='margin-top:2.25pt'><span style='font-size:
+13.0pt;font-family:"Arial MT",sans-serif;color:#1F1F1F'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:13.0pt;color:#1F1F1F'>Parallel<span
+style='letter-spacing:-.35pt'> </span>Computing<span style='letter-spacing:
+-.3pt'> </span>by<span style='letter-spacing:-.3pt'> </span><span
+style='letter-spacing:-.2pt'>IBM.</span></span></p>
+
+</div>
+
+<span style='font-size:13.0pt;font-family:"Arial MT",sans-serif'><br clear=all
+style='page-break-before:always'>
+</span>
+
+<div class=WordSection5>
+
+<p class=MsoListParagraph style='margin-top:4.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;text-align:justify;text-indent:-.25in;
+line-height:115%'><span style='font-size:13.0pt;line-height:115%;font-family:
+"Arial MT",sans-serif;color:#1F1F1F'>●<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:13.0pt;line-height:115%;color:#1F1F1F'>P.
+Dhilleswararao, S. Boppu, M. S. Manikandan and L. R. Cenkeramaddi,
+&quot;Efficient Hardware Architectures for Accelerating Deep Neural Networks:
+Survey,&quot; in IEEE Access, vol. 10, pp. 131788-131828, 2022, doi: <span
+style='letter-spacing:-.1pt'>10.1109/ACCESS.2022.3229767.</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0in;margin-right:3.9pt;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;text-align:justify;text-indent:-.25in;
+line-height:115%'><span style='font-size:13.0pt;line-height:115%;font-family:
+"Arial MT",sans-serif;color:#1F1F1F'>●<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:13.0pt;line-height:115%;color:#1F1F1F;
+letter-spacing:-.1pt'>https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-backgroun
+</span><span style='font-size:13.0pt;line-height:115%;color:#1F1F1F;letter-spacing:
+-.3pt'>d/</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import { articles, arvrArticle, llmsBiasArticle } from "@/lib/articles-data"
 import aiDesignerArticle from "@/lib/articles-data/ai-designer"
+import majoranaChipArticle from "@/lib/articles-data/majorana-chip"
+import aiHardwareArticle from "@/lib/articles-data/ai-hardware"
 import Link from "next/link"
 import Image from "next/image"
 import ReactMarkdown from "react-markdown"
@@ -14,6 +16,8 @@ const articleMap = {
   "beyond-screens-into-reality": arvrArticle,
   "bias-toward-simplicity-llms": llmsBiasArticle,
   "ai-co-designers-creative-process": aiDesignerArticle,
+  "microsoft-majorana-1-chip": majoranaChipArticle,
+  "understanding-hardware-behind-ai-models": aiHardwareArticle,
 }
 
 export async function generateStaticParams() {
