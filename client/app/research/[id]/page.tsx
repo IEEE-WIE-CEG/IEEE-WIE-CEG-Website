@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
-import { articles, arvrArticle, llmsBiasArticle } from "@/lib/articles-data"
+import { articles, arvrArticle, llmsBiasArticle, dijkstraBreakthroughArticle } from "@/lib/articles-data"
 import aiDesignerArticle from "@/lib/articles-data/ai-designer"
 import majoranaChipArticle from "@/lib/articles-data/majorana-chip"
 import aiHardwareArticle from "@/lib/articles-data/ai-hardware"
@@ -18,6 +18,7 @@ const articleMap = {
   "ai-co-designers-creative-process": aiDesignerArticle,
   "microsoft-majorana-1-chip": majoranaChipArticle,
   "understanding-hardware-behind-ai-models": aiHardwareArticle,
+  "65-years-after-dijkstra": dijkstraBreakthroughArticle,
 }
 
 export async function generateStaticParams() {

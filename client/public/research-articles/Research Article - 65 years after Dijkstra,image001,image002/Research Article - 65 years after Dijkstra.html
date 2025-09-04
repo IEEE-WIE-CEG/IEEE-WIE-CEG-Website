@@ -1,0 +1,804 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Noto Sans Symbols";}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoNormal style='margin-bottom:0in;line-height:normal;border:none;
+padding:0in'><span lang=EN-IN style='font-size:18.0pt;font-family:"Cambria",serif;
+color:#17365D'>65 Years After Dijkstra: An Analytical Perspective on Breaking
+the Sorting Barrier</span></p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-IN style='font-family:"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-IN style='font-family:"Cambria",serif'>Authored
+by: Shibani Selvakumar</span></p>
+
+<p class=MsoNormal style='margin-top:24.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>Abstract</span></b></p>
+
+<p class=MsoNormal><span lang=EN-IN style='font-family:"Cambria",serif'>The
+single-source shortest paths (SSSP) problem has been central to algorithmic
+research since the 1950s. Classical deterministic methods such as Dijkstra’s
+algorithm have long been constrained by a sorting barrier, with runtime </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=91 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image001.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> in sparse graphs, while
+Bellman–Ford offered generality at the cost of efficiency. Recent advances
+using randomization surpassed Dijkstra’s bound but lacked deterministic
+guarantees. In 2025, Duan, Mao, Mao, Shu, and Yin introduced the first
+deterministic algorithm to break this barrier, achieving </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=84 height=21
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> time in the comparison–addition
+model. This article traces the historical development of SSSP algorithms,
+analyzes the conceptual significance of the breakthrough, and reflects on its
+broader implications for algorithm design and complexity theory.</span></p>
+
+<p class=MsoNormal style='margin-top:24.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>1. Introduction</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-IN
+style='font-family:"Cambria",serif'>Shortest path algorithms are foundational
+in both theory and practice. They underpin applications ranging from internet
+routing and road navigation to compiler optimization and resource scheduling.
+The single-source shortest paths problem (SSSP) in particular asks: given a
+directed weighted graph </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=66 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image003.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> with non-negative edge weights,
+how can we efficiently compute the minimum distance from a source vertex </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=7 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image004.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> to every other vertex?</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-IN
+style='font-family:"Cambria",serif'>For decades, the fastest known
+deterministic solution for sparse graphs was Dijkstra’s algorithm, with runtime
+</span><span lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:
+"Calibri",sans-serif;position:relative;top:4.5pt'><img width=91 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image001.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> when implemented with efficient
+priority queues. The logn term arises from the need to maintain a perfectly
+ordered priority queue of tentative distances — a process fundamentally tied to
+sorting. This “sorting barrier” was widely believed to be unavoidable in
+deterministic computation.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-IN
+style='font-family:"Cambria",serif'>Randomized methods in the 2020s challenged
+this assumption by achieving sub-</span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=97 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image005.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'>performance in expectation. Yet,
+their reliance on probabilistic guarantees left open the fundamental question: <b>can
+deterministic algorithms do better?</b> The 2025 breakthrough by Duan et al.
+provides a compelling answer, shattering a sixty-year-old barrier.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>3. Historical
+Background</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The development of shortest path algorithms can be understood
+as a gradual evolution in balancing efficiency, generality, and determinism.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'><img width=576 height=97 id=image2.png
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image006.png"></span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0in;
+margin-bottom:0in;margin-left:0in;text-align:center;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Cambria",serif'>Figure
+1: Milestones in single-source shortest paths (SSSP)</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-IN style='font-family:"Cambria",serif'>1958 —
+Bellman–Ford.</span></b><span lang=EN-IN style='font-family:"Cambria",serif'>
+Introduced as a general algorithm capable of handling negative weights. Its
+runtime of </span><span lang=EN-IN style='font-size:11.0pt;line-height:115%;
+font-family:"Calibri",sans-serif;position:relative;top:4.5pt'><img width=43
+height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image007.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> is prohibitive in practice,
+particularly for sparse graphs.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><span
+lang=EN-IN style='font-family:"Cambria",serif'>1959 — Dijkstra.</span></b><span
+lang=EN-IN style='font-family:"Cambria",serif'> A more efficient solution for
+non-negative weights, achieving </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=94 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image008.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> Its reliance on strict priority
+queue ordering tied it inherently to sorting.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-IN style='font-family:"Cambria",serif'>1980s–1990s
+— Heap Optimizations.</span></b><span lang=EN-IN style='font-family:"Cambria",serif'>
+Advances in data structures, such as Fibonacci heaps and pairing heaps, reduced
+constants but failed to escape the </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=33 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image009.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'>overhead.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-IN style='font-family:"Cambria",serif'>2020s —
+Randomized Breakthroughs.</span></b><span lang=EN-IN style='font-family:"Cambria",serif'>
+Works presented at FOCS 2022 and STOC 2024 achieved runtimes below </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=94 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image010.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> but only with high probability.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><span
+lang=EN-IN style='font-family:"Cambria",serif'>2025 — Deterministic Barrier
+Broken.</span></b><span lang=EN-IN style='font-family:"Cambria",serif'> Duan et
+al. achieve </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=84 height=21
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'>, the first deterministic
+improvement in more than half a century.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>4. The 2025
+Breakthrough</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The key result of Duan et al. (2025) is a deterministic
+algorithm for SSSP on directed graphs with non-negative edge weights that runs
+in </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=84 height=21
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> time under the
+comparison–addition model.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>At a high level, the algorithm avoids the full precision of
+global sorting. Instead, it employs a layered relaxation process that groups
+vertices into structured intervals. By relaxing vertices in batches rather than
+strict order, the algorithm ensures correctness while reducing dependence on
+priority queue operations.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>This result is significant for two reasons. First, it breaks a
+barrier that had withstood sixty-five years of research, proving that shortest
+path computation is not inherently tied to sorting. Second, it restores balance
+in the field by showing that deterministic methods can compete with — and
+surpass — randomized approaches.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>5. Analysis</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:13.0pt;line-height:115%;color:#4F81BD'>5.1 Conceptual Contrast</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The contrast between Dijkstra’s classical algorithm and the
+2025 breakthrough is more than a matter of complexity bounds, it is a difference
+in <b>algorithmic worldview</b>. Dijkstra embodies a sorting-driven paradigm:
+every iteration hinges on extracting the globally minimum tentative distance
+from a priority queue, then relaxing its outgoing edges. This exact global
+ordering is what guarantees correctness, but it also anchors the algorithm’s
+runtime to the cost of maintaining a fully sorted structure.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>By contrast, the new approach of Duan et al. embraces <i>approximate
+ordering</i>. Instead of insisting on a perfectly sorted priority queue,
+vertices are grouped into <b>layers or intervals</b> that represent approximate
+distance ranges. Within each layer, vertices are relaxed in batches rather than
+individually, and only when finer distinctions become necessary are groups
+refined. This subtle shift eliminates the need for strict global ordering at
+every step, while still preserving the correctness of the final distances.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0in;
+margin-bottom:0in;margin-left:0in;text-align:center;page-break-after:avoid'><span
+lang=EN-IN style='font-family:"Cambria",serif'><img width=576 height=300
+id=image1.png
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image011.png"></span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0in;
+margin-bottom:0in;margin-left:0in;text-align:center;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Cambria",serif'>Figure
+2: Conceptual contrast: Dijkstra’s global sorting vs. deterministic layered
+relaxations.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The illustration is not pseudocode, but captures the <b>conceptual
+leap</b>: shortest paths do not require perfect sorting. By reducing reliance
+on global order, the new approach cuts the logarithmic factor while preserving
+determinism.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:13.0pt;line-height:115%;color:#4F81BD'>5.3 Runtime Growth</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The asymptotic implications of this shift are depicted in
+Figure 3. On sparse graphs (where </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=40 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image012.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'>), Bellman–Ford’s quadratic
+growth quickly becomes infeasible, while Dijkstra’s </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=61 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image013.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> runtime dominated the
+deterministic frontier for decades. Randomized methods dip just below Dijkstra,
+but only in expectation. Duan et al.’s </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=84 height=21
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'>  curve lies beneath Dijkstra’s,
+demonstrating the first provable deterministic improvement.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0in;
+margin-bottom:0in;margin-left:0in;text-align:center;page-break-after:avoid'><span
+lang=EN-IN style='font-family:"Cambria",serif'><img width=419 height=241
+id=image3.png
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image014.png"></span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0in;
+margin-bottom:0in;margin-left:0in;text-align:center;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Cambria",serif'>Figure
+3: Schematic runtime growth (log–log) (Curves illustrate asymptotics)</span></p>
+
+<p class=MsoNormal align=center style='margin-top:10.0pt;margin-right:0in;
+margin-bottom:0in;margin-left:0in;text-align:center;page-break-after:avoid'><span
+lang=EN-IN style='font-family:"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;text-align:justify;page-break-after:avoid'><span
+lang=EN-IN style='font-family:"Cambria",serif'>This schematic underscores the
+long-term impact: while the absolute gain may be modest for small instances,
+asymptotically the separation grows. It positions the 2025 algorithm as a new <b>theoretical
+baseline</b> for deterministic SSSP.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:13.0pt;line-height:115%;color:#4F81BD'>5.2 Complexity
+Landscape</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>Traditional algorithms reflect fundamentally different
+philosophies. Bellman–Ford embodies brute-force relaxation, guaranteeing
+correctness even with negative weights but at prohibitive cost. Dijkstra
+epitomizes greedy optimization, but is chained to sorting through its priority
+queue. Randomized methods introduced in the 2020s sidestepped exact ordering,
+but only by gambling on probability, leaving open whether determinism could
+compete.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>Duan et al.’s contribution is the first to show that <b>determinism
+can break the glass ceiling</b>: shortest paths do not require perfect sorting.
+By grouping vertices and processing them in carefully structured layers, the
+algorithm achieves progress without precise global order.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=1 border=1 cellspacing=0 cellpadding=0 width=589 style='border-collapse:
+ collapse;border:none'>
+ <tr style='height:39.2pt'>
+  <td width=103 valign=top style='width:76.95pt;border:solid black 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt;height:39.2pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Algorithm</span></b></p>
+  </td>
+  <td width=66 valign=top style='width:49.4pt;border:solid black 1.0pt;
+  border-left:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt;height:39.2pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif;color:black'>Year</span></b></p>
+  </td>
+  <td width=105 valign=top style='width:78.4pt;border:solid black 1.0pt;
+  border-left:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt;height:39.2pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif;color:black'>Runtime</span></b></p>
+  </td>
+  <td width=89 valign=top style='width:66.8pt;border:solid black 1.0pt;
+  border-left:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt;height:39.2pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif;color:black'>Handles Negatives?</span></b></p>
+  </td>
+  <td width=118 valign=top style='width:88.5pt;border:solid black 1.0pt;
+  border-left:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt;height:39.2pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif;color:black'>Deterministic/
+  Randomized</span></b></p>
+  </td>
+  <td width=109 valign=top style='width:81.55pt;border:solid black 1.0pt;
+  border-left:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt;height:39.2pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif;color:black'>Practical
+  Relevance</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:52.9pt'>
+  <td width=103 valign=top style='width:76.95pt;border:solid black 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:52.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Bellman–Ford</span></p>
+  </td>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:52.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>1958</span></p>
+  </td>
+  <td width=105 valign=top style='width:78.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:52.9pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span
+  lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif'><img
+  width=43 height=20
+  src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image007.png"></span></p>
+  </td>
+  <td width=89 valign=top style='width:66.8pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:52.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Yes</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.5pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:52.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Deterministic</span></p>
+  </td>
+  <td width=109 valign=top style='width:81.55pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:52.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Correct but impractical for
+  large graphs</span></p>
+  </td>
+ </tr>
+ <tr style='height:65.7pt'>
+  <td width=103 valign=top style='width:76.95pt;border:solid black 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:65.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Dijkstra</span></p>
+  </td>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:65.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>1959</span></p>
+  </td>
+  <td width=105 valign=top style='width:78.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:65.7pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span
+  lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif'><img
+  width=91 height=20
+  src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image001.png"></span></p>
+  </td>
+  <td width=89 valign=top style='width:66.8pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:65.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>No</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.5pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:65.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Deterministic</span></p>
+  </td>
+  <td width=109 valign=top style='width:81.55pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:65.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Long-standing baseline for
+  sparse graphs</span></p>
+  </td>
+ </tr>
+ <tr style='height:65.15pt'>
+  <td width=103 valign=top style='width:76.95pt;border:solid black 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:65.15pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Heap Optimizations</span></p>
+  </td>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:65.15pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>1980s–90s </span></p>
+  </td>
+  <td width=105 valign=top style='width:78.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:65.15pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span
+  lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif'><img
+  width=91 height=20
+  src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image001.png"></span></p>
+  </td>
+  <td width=89 valign=top style='width:66.8pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:65.15pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>No</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.5pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:65.15pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Deterministic</span></p>
+  </td>
+  <td width=109 valign=top style='width:81.55pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:65.15pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Improved performance but same
+  asymptotic bound</span></p>
+  </td>
+ </tr>
+ <tr style='height:39.7pt'>
+  <td width=103 valign=top style='width:76.95pt;border:solid black 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:39.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Randomized SSSP</span></p>
+  </td>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:39.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>2022–24</span></p>
+  </td>
+  <td width=105 valign=top style='width:78.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:39.7pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span
+  lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif'><img
+  width=91 height=20
+  src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image001.png"></span></p>
+  </td>
+  <td width=89 valign=top style='width:66.8pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:39.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>No</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.5pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:39.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Randomized</span></p>
+  </td>
+  <td width=109 valign=top style='width:81.55pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:39.7pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Theoretical progress, less
+  robust in practice</span></p>
+  </td>
+ </tr>
+ <tr style='height:25.9pt'>
+  <td width=103 valign=top style='width:76.95pt;border:solid black 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:25.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Duan et al.</span></b></p>
+  </td>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:25.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif'>2025</span></b></p>
+  </td>
+  <td width=105 valign=top style='width:78.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:25.9pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span
+  lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif'><img
+  width=84 height=21
+  src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span></p>
+  </td>
+  <td width=89 valign=top style='width:66.8pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:25.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif'>No</span></b></p>
+  </td>
+  <td width=118 valign=top style='width:88.5pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:25.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif'>Deterministic</span></b></p>
+  </td>
+  <td width=109 valign=top style='width:81.55pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:25.9pt'>
+  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b><span
+  lang=EN-IN style='font-family:"Cambria",serif'>First deterministic
+  breakthrough in 65+ years</span></b></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif;color:white'>The illustration is not pseudocode, but captures
+the </span><b><span lang=EN-IN style='font-family:"Cambria",serif'>conceptual
+leap</span></b><span lang=EN-IN style='font-family:"Cambria",serif'>: shortest
+paths do not require perfect sorting. By reducing reliance on global order, the
+new approach cuts the logarithmic factor while preserving determinism.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:13.0pt;line-height:115%;color:#4F81BD'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:13.0pt;line-height:115%;color:#4F81BD'>5.2 Critical
+Reflections</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>Despite its historic contribution, the 2025 breakthrough is
+not without boundaries. A deeper look reveals both strengths and caveats:</span></p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal style='margin-top:10.0pt;margin-bottom:0in;page-break-after:
+     avoid'><b><span lang=EN-IN style='font-family:"Cambria",serif'>Weight
+     Restrictions:</span></b><span lang=EN-IN style='font-family:"Cambria",serif'>
+     Like Dijkstra’s algorithm, the new method requires non-negative edge
+     weights. Extending determinism beyond this constraint — to handle negative
+     weights efficiently — remains an open frontier.</span></li>
+ <li class=MsoNormal style='margin-top:10.0pt;margin-bottom:0in;page-break-after:
+     avoid'><b><span lang=EN-IN style='font-family:"Cambria",serif'>Asymptotic
+     vs. Practical Efficiency: </span></b><span lang=EN-IN style='font-family:
+     "Cambria",serif'>The runtime improvement from </span><span
+     lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+     position:relative;top:4.5pt'><img width=91 height=20
+     src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image001.png"></span><span
+     lang=EN-IN style='font-family:"Cambria",serif'> to </span><span
+     lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+     position:relative;top:4.5pt'><img width=84 height=21
+     src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+     lang=EN-IN style='font-family:"Cambria",serif'> is asymptotically elegant.
+     However, hidden constants may blunt practical gains on real-world graphs
+     of modest size. The true test will come with implementations.</span></li>
+ <li class=MsoNormal style='margin-top:10.0pt;margin-bottom:0in;page-break-after:
+     avoid'><b><span lang=EN-IN style='font-family:"Cambria",serif'>Conceptual
+     Victory:</span></b><span lang=EN-IN style='font-family:"Cambria",serif'>
+     Most importantly, the algorithm severs the assumed equivalence between
+     deterministic shortest paths and sorting. This is a philosophical shift:
+     shortest paths are no longer chained to global ordering.</span></li>
+</ol>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>Taken together, these reflections show that while the
+breakthrough’s practical impact is yet to unfold, its <b>theoretical
+significance is undeniable</b>. It not only surpasses a long-standing runtime
+barrier but also reshapes our understanding of what is possible in
+deterministic graph algorithms.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>7. Future Directions
+and Speculation</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The immediate open question is whether the exponent in </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=84 height=21
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> can be reduced further,
+potentially reaching </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=38 height=20
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image015.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'> Another direction concerns
+extending the approach to graphs with negative weights, a capability that would
+unify efficiency with generality. Dynamic graphs, which better model real-world
+networks, present another frontier.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>Beyond shortest paths, this work underscores a broader lesson:
+algorithmic barriers are not always fundamental. If sorting is not intrinsic to
+shortest path computation, what other problems, that are long believed and
+settled, might be waiting for re-examination?</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>8. Conclusion</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>The 2025 breakthrough by Duan et al. is more than an
+asymptotic improvement. It dismantles a conceptual barrier that shaped our
+understanding of shortest path algorithms for over sixty years. By achieving a
+deterministic runtime of </span><span
+lang=EN-IN style='font-size:11.0pt;line-height:115%;font-family:"Calibri",sans-serif;
+position:relative;top:4.5pt'><img width=84 height=21
+src="Research%20Article%20-%2065%20years%20after%20Dijkstra_files/image002.png"></span><span
+lang=EN-IN style='font-family:"Cambria",serif'>, the result reaffirms that even
+the most classical algorithmic problems can yield new surprises. For the theory
+of algorithms, it is both a milestone and an invitation: to question long-held
+assumptions and to seek further advances where none were thought possible.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><b><span lang=EN-IN
+style='font-size:14.0pt;line-height:115%;color:#365F91'>9. References</span></b></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-IN style='font-family:"Cambria",serif'>Duan, R.,
+Mao, J., Mao, X., Shu, X., &amp; Yin, L. (2025). <i>Breaking the Sorting
+Barrier for Directed Single-Source Shortest Paths.</i> arXiv:2504.17033.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-IN style='font-family:"Cambria",serif'>Bellman, R.
+(1958). <i>On a Routing Problem.</i> Quarterly of Applied Mathematics.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-IN style='font-family:"Cambria",serif'>Dijkstra, E.
+W. (1959). <i>A Note on Two Problems in Connexion with Graphs.</i> Numerische
+Mathematik.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;text-indent:-.25in;page-break-after:avoid'><span
+lang=EN-IN style='font-size:10.0pt;line-height:115%;font-family:"Noto Sans Symbols"'>●<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-IN style='font-family:"Cambria",serif'>Henzinger,
+M., Bernstein, A., Nanongkai, D., &amp; Saranurak, T. (2022). <i>Randomized
+Improvements for Shortest Paths.</i> Proceedings of FOCS.</span></p>
+
+<p class=MsoNormal style='margin-top:10.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;page-break-after:avoid'><span lang=EN-IN style='font-family:
+"Cambria",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-IN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
