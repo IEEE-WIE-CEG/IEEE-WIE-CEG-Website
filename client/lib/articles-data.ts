@@ -279,15 +279,15 @@ export const dijkstraBreakthroughArticle: ArticleData = {
   excerpt: "The single-source shortest paths (SSSP) problem has been central to algorithmic research since the 1950s. Classical deterministic methods such as Dijkstra's algorithm have long been constrained by a sorting barrier, with runtime O(m+n log n) in sparse graphs.",
   tags: ["Algorithm Analysis", "Shortest Paths", "Dijkstra's Algorithm", "Graph Algorithms", "Complexity Theory"],
   featuredImage: "/research-images/dijkstra/feature-image.jpg",
-  abstract: "The single-source shortest paths (SSSP) problem has been central to algorithmic research since the 1950s. Classical deterministic methods such as Dijkstra's algorithm have long been constrained by a sorting barrier, with runtime O(m+n log n) in sparse graphs, while Bellman-Ford offered generality at the cost of efficiency. Recent advances using randomization surpassed Dijkstra's bound but lacked deterministic guarantees. In 2025, Duan, Mao, Mao, Shu, and Yin introduced the first deterministic algorithm to break this barrier, achieving O(m+n^{0.95}) time in the comparison-addition model.This article traces the historical development of SSSP algorithms, analyzes the conceptual significance of the breakthrough, and reflects on its broader implications for algorithm design and complexity theory.",
+  abstract: "The single-source shortest paths (SSSP) problem has been central to algorithmic research since the 1950s. Classical deterministic methods such as Dijkstra's algorithm have long been constrained by a sorting barrier, with runtime O(m+n log n) in sparse graphs, while Bellman-Ford offered generality at the cost of efficiency. Recent advances using randomization surpassed Dijkstra's bound but lacked deterministic guarantees. In 2025, Duan, Mao, Mao, Shu, and Yin introduced the first deterministic algorithm to break this barrier, achieving O(m+n^{2/3}) time in the comparison-addition model.This article traces the historical development of SSSP algorithms, analyzes the conceptual significance of the breakthrough, and reflects on its broader implications for algorithm design and complexity theory.",
   content: `
 ## Introduction
 
-Shortest path algorithms are foundational in both theory and practice. They underpin applications ranging from internet routing and road navigation to compiler optimization and resource scheduling. The single-source shortest paths problem (SSSP) in particular asks: given a directed weighted graph ![graph](/research-images/dijkstra/math-images/image003.png) with non-negative edge weights, how can we efficiently compute the minimum distance from a source vertex ![source](/research-images/dijkstra/math-images/image004.png) to every other vertex?
+Shortest path algorithms are foundational in both theory and practice. They underpin applications ranging from internet routing and road navigation to compiler optimization and resource scheduling. The single-source shortest paths problem (SSSP) in particular asks: given a directed weighted graph G=(V,E) with non-negative edge weights, how can we efficiently compute the minimum distance from a source vertex s to every other vertex?
 
-For decades, the fastest known deterministic solution for sparse graphs was Dijkstra's algorithm, with runtime ![Dijkstra O](/research-images/dijkstra/math-images/image001.png) when implemented with efficient priority queues. The log n term arises from the need to maintain a perfectly ordered priority queue of tentative distances — a process fundamentally tied to sorting. This "sorting barrier" was widely believed to be unavoidable in deterministic computation.
+For decades, the fastest known deterministic solution for sparse graphs was Dijkstra's algorithm, with runtime O(m+nlogn) when implemented with efficient priority queues. The log n term arises from the need to maintain a perfectly ordered priority queue of tentative distances — a process fundamentally tied to sorting. This "sorting barrier" was widely believed to be unavoidable in deterministic computation.
 
-Randomized methods in the 2020s challenged this assumption by achieving sub-![sub O](/research-images/dijkstra/math-images/image005.png) performance in expectation. Yet, their reliance on probabilistic guarantees left open the fundamental question: *can deterministic algorithms do better?* The 2025 breakthrough by Duan et al. provides a compelling answer, shattering a sixty-year-old barrier.
+Randomized methods in the 2020s challenged this assumption by achieving sub-O(m+nlogn) performance in expectation. Yet, their reliance on probabilistic guarantees left open the fundamental question: *can deterministic algorithms do better?* The 2025 breakthrough by Duan et al. provides a compelling answer, shattering a sixty-year-old barrier.
 
 ## Historical Background
 
@@ -296,15 +296,15 @@ The development of shortest path algorithms can be understood as a gradual evolu
 ![Algorithm Milestones Timeline](/research-images/dijkstra/math-images/image006.png)
 *Figure 1: Milestones in single-source shortest paths (SSSP)*
 
-- **1958 — Bellman-Ford**: Introduced as a general algorithm capable of handling negative weights. Its runtime of ![Bellman-Ford runtime](/research-images/dijkstra/math-images/image007.png) is prohibitive in practice, particularly for sparse graphs.
-- **1959 — Dijkstra**: A more efficient solution for non-negative weights, achieving ![Dijkstra runtime](/research-images/dijkstra/math-images/image008.png). Its reliance on strict priority queue ordering tied it inherently to sorting.
-- **1980s-1990s — Heap Optimizations**: Advances in data structures, such as Fibonacci heaps and pairing heaps, reduced constants but failed to escape the ![log factor](/research-images/dijkstra/math-images/image009.png) overhead.
-- **2020s — Randomized Breakthroughs**: Works presented at FOCS 2022 and STOC 2024 achieved runtimes below ![below Dijkstra](/research-images/dijkstra/math-images/image010.png) but only with high probability.
-- **2025 — Deterministic Barrier Broken**: Duan et al. achieve ![breakthrough result](/research-images/dijkstra/math-images/image002.png), the first deterministic improvement in more than half a century.
+- **1958 — Bellman-Ford**: Introduced as a general algorithm capable of handling negative weights. Its runtime of O(mn) is prohibitive in practice, particularly for sparse graphs.
+- **1959 — Dijkstra**: A more efficient solution for non-negative weights, achieving O(m+nlogn). Its reliance on strict priority queue ordering tied it inherently to sorting.
+- **1980s-1990s — Heap Optimizations**: Advances in data structures, such as Fibonacci heaps and pairing heaps, reduced constants but failed to escape the logn overhead.
+- **2020s — Randomized Breakthroughs**: Works presented at FOCS 2022 and STOC 2024 achieved runtimes below O(m+nlogn), but only with high probability.
+- **2025 — Deterministic Barrier Broken**: Duan et al. achieve O(m(log)^(2/3)n), the first deterministic improvement in more than half a century.
 
 ## The 2025 Breakthrough
 
-The key result of Duan et al. (2025) is a deterministic algorithm for SSSP on directed graphs with non-negative edge weights that runs in ![O(m + n^0.95)](/research-images/dijkstra/math-images/image002.png) time under the comparison-addition model.
+The key result of Duan et al. (2025) is a deterministic algorithm for SSSP on directed graphs with non-negative edge weights that runs in O(m (log)^(2/3) n) time under the comparison-addition model.
 
 At a high level, the algorithm avoids the full precision of global sorting. Instead, it employs a layered relaxation process that groups vertices into structured intervals. By relaxing vertices in batches rather than strict order, the algorithm ensures correctness while reducing dependence on priority queue operations.
 
@@ -323,7 +323,7 @@ This illustration captures the conceptual leap: shortest paths do not require pe
 
 ### Runtime Growth Comparison
 
-The asymptotic implications of this shift are depicted in the following schematic. On sparse graphs (where ![sparse condition](/research-images/dijkstra/math-images/image012.png)), Bellman-Ford's quadratic growth quickly becomes infeasible, while Dijkstra's ![Dijkstra runtime](/research-images/dijkstra/math-images/image013.png) runtime dominated the deterministic frontier for decades. Randomized methods dip just below Dijkstra, but only in expectation. Duan et al.'s ![breakthrough curve](/research-images/dijkstra/math-images/image002.png) curve lies beneath Dijkstra's, demonstrating the first provable deterministic improvement.
+The asymptotic implications of this shift are depicted in the following schematic. On sparse graphs (where m≈n), Bellman-Ford's quadratic growth quickly becomes infeasible, while Dijkstra's O(nlogn) runtime dominated the deterministic frontier for decades. Randomized methods dip just below Dijkstra, but only in expectation. Duan et al.'s O(m(log)^(2/3)n curve lies beneath Dijkstra's, demonstrating the first provable deterministic improvement.
 
 ![Runtime growth comparison of shortest path algorithms](/research-images/dijkstra/math-images/image014.png)
 *Figure 3: Schematic runtime growth (log-log) (Curves illustrate asymptotics)*
@@ -354,7 +354,7 @@ Despite its historic contribution, the 2025 breakthrough is not without boundari
 
 1. **Weight Restrictions**: Like Dijkstra's algorithm, the new method requires non-negative edge weights. Extending determinism beyond this constraint — to handle negative weights efficiently — remains an open frontier.
 
-2. **Asymptotic vs. Practical Efficiency**: The runtime improvement from ![improvement](/research-images/dijkstra/math-images/image001.png) to ![new bound](/research-images/dijkstra/math-images/image002.png) is asymptotically elegant. However, hidden constants may blunt practical gains on real-world graphs of modest size. The true test will come with implementations.
+2. **Asymptotic vs. Practical Efficiency**: The runtime improvement from O(m+nlogn) to O(m(log)^(2/3)n) is asymptotically elegant. However, hidden constants may blunt practical gains on real-world graphs of modest size. The true test will come with implementations.
 
 3. **Conceptual Victory**: Most importantly, the algorithm severs the assumed equivalence between deterministic shortest paths and sorting. This is a philosophical shift: shortest paths are no longer chained to global ordering.
 
@@ -362,13 +362,13 @@ Taken together, these reflections show that while the breakthrough's practical i
 
 ## Future Directions and Speculation
 
-The immediate open question is whether the exponent in ![O(m + n^0.95)](/research-images/dijkstra/math-images/image002.png) can be reduced further, potentially reaching ![potential bound](/research-images/dijkstra/math-images/image015.png). Another direction concerns extending the approach to graphs with negative weights, a capability that would unify efficiency with generality. Dynamic graphs, which better model real-world networks, present another frontier.
+The immediate open question is whether the exponent in O(m(log)^(2/3)n) can be reduced further, potentially reaching O(m). Another direction concerns extending the approach to graphs with negative weights, a capability that would unify efficiency with generality. Dynamic graphs, which better model real-world networks, present another frontier.
 
 Beyond shortest paths, this work underscores a broader lesson: algorithmic barriers are not always fundamental. If sorting is not intrinsic to shortest path computation, what other problems, that are long believed and settled, might be waiting for re-examination?
 
 ## Conclusion
 
-The 2025 breakthrough by Duan, Mao, Mao, Shu, and Yin dismantles a conceptual barrier that shaped our understanding of shortest path algorithms for over sixty years. By achieving a deterministic runtime of ![final bound](/research-images/dijkstra/math-images/image002.png), the result reaffirms that even the most classical algorithmic problems can yield new surprises. For the theory of algorithms, it is both a milestone and an invitation: to question long-held assumptions and to seek further advances where none were thought possible.
+The 2025 breakthrough by Duan, Mao, Mao, Shu, and Yin dismantles a conceptual barrier that shaped our understanding of shortest path algorithms for over sixty years. By achieving a deterministic runtime of O(m(log)^(2/3)n), the result reaffirms that even the most classical algorithmic problems can yield new surprises. For the theory of algorithms, it is both a milestone and an invitation: to question long-held assumptions and to seek further advances where none were thought possible.
 
 ### References
 
