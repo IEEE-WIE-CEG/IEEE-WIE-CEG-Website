@@ -6,7 +6,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { events as allEvents } from "@/lib/events-data"
 import { articles as allArticles } from "@/lib/articles-data"
-import { AnnouncementBanner } from "@/components/announcement-banner"
 
 export default function Home() {
   // Find the latest upcoming event
@@ -31,7 +30,6 @@ export default function Home() {
 
   return (
     <main className="flex-1">
-      <AnnouncementBanner />
       {/* Hero Section */}
       <section
         className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-cover bg-center"
@@ -42,7 +40,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                IEEE WIE-CEG Student Chapter
+                IEEE WIE-CEG Student Affinity Group
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl">
                 Empowering women in engineering and technology. Join our community of innovators, leaders, and
@@ -65,10 +63,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Event */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          {nextEvent ? (
+      {/* Featured Event - Only show if there are upcoming events */}
+      {nextEvent && (
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+          <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -110,13 +108,11 @@ export default function Home() {
                 />
               </div>
             </div>
-          ) : (
-            <div className="text-center py-12 text-muted-foreground">No upcoming events at the moment.</div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
-      {/* Latest Research Articles */}
+      {/* Latest Research Articles - Always shown, but positioned right after hero if no events */}
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -188,7 +184,7 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Explore IEEE WIE-CEG Student Chapter</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Explore IEEE WIE-CEG Student Affinity Group</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Discover what makes our community special and how you can be part of it.
               </p>

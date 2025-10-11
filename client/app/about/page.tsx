@@ -222,7 +222,7 @@ export default function AboutPage() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                About IEEE WIE-CEG Student Chapter
+                About IEEE WIE-CEG Student Affinity Group
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl">
                 Empowering the next generation of women engineers and technologists
@@ -368,7 +368,7 @@ export default function AboutPage() {
             </div>
             <div className="space-x-4">
               <Link href="/contact">
-                <Button className="bg-white text-purple-600 hover:bg-gray-100">Join IEEE WIE-CEG Student Chapter</Button>
+                <Button className="bg-white text-purple-600 hover:bg-gray-100">Join IEEE WIE-CEG Student Affinity Group</Button>
               </Link>
               <Link href="/contact">
                 <Button

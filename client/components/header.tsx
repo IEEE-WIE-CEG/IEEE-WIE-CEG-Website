@@ -19,7 +19,6 @@ export function Header() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/events", label: "Events" },
-    { href: "/events/operation-trinetra", label: "Operation Trinetra", special: true },
     { href: "/research", label: "Research" },
     { href: "/gallery", label: "Gallery" },
     { href: "/contact", label: "Contact Us" },
@@ -32,12 +31,12 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-white">
           <Image
             src="/logo2.png"
-            alt="IEEE WIE-CEG Student Chapter Logo"
+            alt="IEEE WIE-CEG Student Affinity Group Logo"
             width={80}
             height={80}
             className="w-18 h-16 md:w-18 md:h-16"
           />
-          <span className="hidden sm:inline text-sm md:text-xl">IEEE WIE-CEG Student Chapter</span>
+          <span className="hidden sm:inline text-sm md:text-xl">IEEE WIE-CEG Student Affinity Group</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -47,11 +46,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`transition-colors font-medium px-3 py-2 rounded-md ${
-                    item.special
-                      ? "text-yellow-300 hover:text-yellow-200 bg-purple-600/30 hover:bg-purple-600/50 border border-yellow-400/30 hover:border-yellow-300/50 shadow-sm hover:shadow-md"
-                      : "text-purple-100 hover:text-white hover:bg-white/10"
-                  }`}
+                  className="transition-colors font-medium px-3 py-2 rounded-md text-purple-100 hover:text-white hover:bg-white/10"
                 >
                   {item.label}
                 </Link>
@@ -80,11 +75,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     onClick={closeMenu}
-                    className={`block transition-colors font-medium px-3 py-3 rounded-md ${
-                      item.special
-                        ? "text-yellow-300 hover:text-yellow-200 bg-purple-600/30 hover:bg-purple-600/50 border border-yellow-400/30 hover:border-yellow-300/50"
-                        : "text-purple-100 hover:text-white hover:bg-white/10"
-                    }`}
+                    className="block transition-colors font-medium px-3 py-3 rounded-md text-purple-100 hover:text-white hover:bg-white/10"
                   >
                     {item.label}
                   </Link>
