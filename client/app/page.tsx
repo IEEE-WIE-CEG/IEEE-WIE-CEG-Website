@@ -190,7 +190,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+          <div className="mx-auto grid max-w-6xl items-center gap-6 py-12 lg:grid-cols-4 lg:gap-12">
             <Card>
               <CardHeader>
                 <CardTitle>About Us</CardTitle>
@@ -214,6 +214,19 @@ export default function Home() {
                 </p>
                 <Button variant="link" className="mt-4 p-0" asChild>
                   <Link href="/contact">Contact Us →</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Research Projects</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Dive into our flagship projects focused on ethical, inclusive, and impactful engineering solutions.
+                </p>
+                <Button variant="link" className="mt-4 p-0" asChild>
+                  <Link href="/research-projects">View Projects →</Link>
                 </Button>
               </CardContent>
             </Card>

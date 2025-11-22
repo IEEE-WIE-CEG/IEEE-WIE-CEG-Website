@@ -1,0 +1,268 @@
+DETECTING AND MITIGATING GENDER BIAS IN AI-POWERED RESUME SCREENING SYSTEMS
+Introduction
+AI-driven recruitment models are increasingly used to rank and shortlist candidates based on their resumes. However, these models may unintentionally learn and amplify gender bias, even when explicit gender indicators are removed through latent linguistic cues, occupational stereotypes, or imbalanced training data.
+
+Our research aims to causally measure and mitigate gender bias in resume-ranking systems using an interpretable, data-driven pipeline. By combining embedding analysis, counterfactual generation, and causal inference, we systematically evaluate whether gender-related signals influence model decisions.
+
+We then apply adaptive bias-reduction methods that adjust the model’s learning process to treat all candidates fairly, without sacrificing accuracy.
+
+Through built-in validation and testing, our framework ensures that the hiring model remains transparent, trustworthy, and equitable across genders.
+
+Abstract & Methodology
+Bias in automated hiring systems often arises from demographic cues embedded within resumes, leading to unfair candidate screening. This research presents a bias-aware resume evaluation pipeline that neutralizes gender and identity indicators while preserving skill-based semantics. The system begins with a custom spaCy-based masking and extraction framework, which anonymizes names, pronouns, and gendered titles, followed by structured data extraction and embedding generation using MiniLM.
+To mitigate residual bias, an Adversarial Subspace Counterfactual Generation (ASCG) module and Iterative Nullspace Projection (INLP) were employed to remove gender-correlated components from embedding space. The resulting debiased vectors feed into a multi-stage evaluation system integrating ATS-style scoring, counterfactual validation, and causal inference analysis.
+Comprehensive experiments confirmed high semantic retention (cosine ≈ 0.92) and minimal gender leakage (probe AUC ≈ 0.5). The framework further includes grammar correction, skill-experience quantification, and an interpretable ranking mechanism that transparently explains candidate scores. The final pipeline demonstrates that algorithmic fairness and performance can coexist, enabling responsible AI-driven recruitment systems that emphasize competence over identity.
+Research Timeline (Aug–Oct 2025)
+
+Phase 1 — Data Preprocessing & NER Masking (Early–Mid August 2025)
+Goal: Ensure fairness and privacy by removing demographic cues from resumes.
+Built a custom spaCy pipeline to mask gendered entities:
+
+
+Detected PERSON, PRONOUN, TITLE_GENDERED, ORG_DEMOG.
+
+
+Added heuristics to avoid overmasking project or organization names.
+
+
+Created whitelists for technical keywords (React, MERN, AWS, etc.).
+
+
+Generated masked outputs:
+
+
+masked_txt_safer/, embeddings_safer/, and masking summaries.
+
+
+Verified minimal semantic loss (cosine similarity ≈ 0.92).
+
+
+Completed by 24.08.25.
+
+
+
+Phase 2 — Resume Extraction & Embedding Generation (Late August 2025)
+Goal: Convert resumes into structured, machine-understandable representations.
+Automated extraction of names, contact info, skills, education, and experience.
+
+
+Used pdfplumber + pypdf for digital resumes, with OCR fallback for scanned ones.
+
+
+Implemented NER-based section detection for accurate segmentation.
+
+
+Exported structured data → resume_extraction_with_summary.csv.
+
+
+Integrated Groq API and LangChain multimodal RAG tests.
+
+
+Applied grammar correction & skill-experience scoring pipeline.
+
+
+Completed by 27.08.25.
+
+
+
+Phase 3 — Adversarial Subspace Counterfactual Generation (ASCG) Setup (Late August 2025)
+Goal: Build a model resilient to gender-coded perturbations.
+Conceptualized ASCG framework for gender-invariant job-fit prediction.
+
+
+Steps implemented:
+
+
+Embed resumes using SentenceTransformer (all-MiniLM-L6-v2).
+
+
+Identify gender direction via synthetic male–female pairs.
+
+
+Generate counterfactual embeddings.
+
+
+Train model with fairness-aware loss:
+ [
+ L_{total} = L_{task} + αL_{cf}
+ ]
+
+
+Trained initial logistic regression baseline on 29.08.25.
+
+
+
+Phase 4 — Structured Feature Extraction (Early September 2025)
+Goal: Enhance interpretability and prepare for causal modeling.
+Extracted title, company, duration, and skill data from experience sections.
+
+
+Added POS-based and frequency-based skill vectors.
+
+
+Generated structured datasets with confounders (education, skills, experience).
+
+
+
+Phase 5 — Debiasing & Model Refinement (Mid–Late September 2025)
+Goal: Remove gender-correlated components while preserving skill semantics.
+Combined Hard Debias + Counterfactual PCA:
+
+
+Learned gender direction via logistic regression probes.
+
+
+Averaged with PCA-based direction for robust gender vector.
+
+
+Applied projection-based debiasing:
+ [
+ E_{debiased} = E - (E \cdot g)g
+ ]
+
+
+Integrated in training loop (Random Forest classifier).
+
+
+Validated fairness via probe AUC ≈ 0.5 → minimal gender leakage.
+
+
+
+Phase 6 — Multi-Stage Debiasing & INLP Integration (Late September 2025)
+Goal: Strengthen fairness using iterative subspace removal.
+Implemented Iterative Nullspace Projection (INLP) to eliminate multiple gender directions.
+
+
+Applied top-PCA cleanup to remove residual bias.
+
+
+Stored E_debiased embeddings for final training.
+
+
+Trained MLP downstream model for job-fit prediction.
+
+
+Evaluated using accuracy, AUC, and gender probe metrics.
+
+
+
+Phase 7 — ATS Scoring System Development (Late September – Early October 2025)
+Goal: Create an interpretable, fairness-aligned ranking module.
+Designed weighted heuristic scoring system using:
+
+
+Skill overlap
+
+
+Degree & certification relevance
+
+
+Years of experience
+
+
+Resume–JD cosine similarity
+
+
+Normalized features → composite ATS score.
+
+
+Added explainability: skill-level contribution breakdowns.
+
+
+Stable as of 11.10.25.
+
+
+
+Phase 8 — Bias Simulation & Causal Validation (Late September – Mid October 2025)
+Goal: Empirically test fairness through controlled bias and causal analysis.
+Introduced synthetic bias by skewing gender distributions.
+
+
+Trained Random Forest / Logistic / MLP probes to detect gender leakage.
+
+
+Conducted Causal Inference via DoWhy + CausalForestDML:
+
+
+Estimated causal effect of gender on job-fit score.
+
+
+Controlled for confounders (skills, education, experience).
+
+
+Performed refutation tests for robustness.
+
+
+
+Phase 9 — System Optimization & Expansion (Mid October 2025 – Ongoing)
+Goal: Improve scalability, interpretability, and multi-attribute fairness.
+Axis
+Current
+Upgrade Plan
+Impact
+Parsing
+Regex-based
+ML + layout-aware
+Robust sectioning
+Skill Extraction
+spaCy chunks
+Ontology + fuzzy match
+Higher accuracy
+Embeddings
+MiniLM
+E5-Large / BGE
+Better semantic fidelity
+Scoring
+Heuristic
+ML-based ranking
+Adaptive scoring
+Bias Handling
+Counterfactual PCA
+Multi-attribute debiasing
+Fairness across traits
+Explainability
+None
+SHAP + reasoning
+Transparent decisions
+Performance
+Local
+FAISS + batch embeddings
+Scalability
+
+Ongoing (as of 15.10.25): Fine-tuning α (fairness weight) and subspace strength for optimal fairness–accuracy trade-off.
+
+Incase you need one-liners for the diagram
+Phase
+Focus
+Outcome
+1–2
+Data cleaning, masking, extraction
+Bias-free structured dataset
+3
+Counterfactual subspace setup
+Gender-invariant baseline model
+4–5
+Debiasing & causal features
+Controlled confounder modeling
+6
+INLP & PCA cleanup
+Multi-stage fairness pipeline
+7
+ATS ranking
+Transparent candidate scoring
+8
+Causal validation
+Proven fairness under simulation
+9
+Optimization
+Scalable and explainable system
+
+
+
+
+Relevant Links
+
+https://genderpolicyreport.umn.edu/algorithmic-bias-in-job-hiring/
+
+https://arxiv.org/pdf/2112.08910
+

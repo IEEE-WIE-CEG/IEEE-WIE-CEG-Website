@@ -20,6 +20,7 @@ export function Header() {
     { href: "/about", label: "About Us" },
     { href: "/events", label: "Events" },
     { href: "/research", label: "Research" },
+    { href: "/research-projects", label: "Research Projects" },
     { href: "/gallery", label: "Gallery" },
     { href: "/contact", label: "Contact Us" },
   ]
